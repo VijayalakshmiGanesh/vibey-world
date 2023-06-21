@@ -1,33 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { MdOutlineTune } from "react-icons/md";
-import {
-  AiFillCaretDown,
-  AiFillCaretUp,
-  AiOutlineHome,
-  AiOutlineSearch,
-  AiOutlineHeart,
-  AiFillHeart,
-} from "react-icons/ai";
-import { BiTrendingUp, BiBookmark } from "react-icons/bi";
-import { BsThreeDots } from "react-icons/bs";
-import { CgProfile } from "react-icons/cg";
+import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
+import { BiTrendingUp } from "react-icons/bi";
 import { v4 as uuid } from "uuid";
-import { NavLink } from "react-router-dom";
 import Avatar from "react-avatar";
 
-import {
-  deletePost,
-  editPost,
-  getAllPosts,
-  likePost,
-  newPost,
-  unlikePost,
-} from "../services/Posts";
+import { getAllPosts, newPost } from "../services/Posts";
 import { useData } from "../context/DataContext";
 import { formatDate } from "../backend/utils/authUtils";
 import { useAuth } from "../context/AuthContext";
-import ProfileCard from "../component/ProfileCard";
 import { getAllUsers } from "../services/Auth";
 import PostCard from "../component/PostCard";
 import NavBar from "../component/NavBar";
@@ -35,13 +17,11 @@ import Aside from "../component/Aside";
 
 function Home() {
   const { posts, datadispatch } = useData();
-  const { currentUserDetails, userDispatch, allUsers } = useAuth();
+  const { currentUserDetails, userDispatch } = useAuth();
   const [sortPostsBy, setSortPostsBy] = useState("Latest");
   const [displaySortOption, setDisplaySortOption] = useState(false);
   const [filteredPosts, setFilteredPosts] = useState(posts);
   const [newPostContent, setNewPostContent] = useState("");
-  const [displayPostOptions, setDisplayPostOptions] = useState(false);
-  const [isEditingPost, setIsEditingPost] = useState();
   // const [isEditingPost, setIsEditingPost] = useState({})
   const filterPosts = () => {
     return [
@@ -76,14 +56,6 @@ function Home() {
       datadispatch
     );
     setNewPostContent("");
-  };
-
-  const checkLikedList = (likedList) => {
-    return (
-      likedList.findIndex(
-        ({ username }) => currentUserDetails.username === username
-      ) === -1
-    );
   };
 
   console.log("posts", filteredPosts);

@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router";
 import Avatar from "react-avatar";
 import { useEffect } from "react";
 
-import { followUser, getUserDetails, getUserPosts } from "../services/Auth";
+import { followUser, getUserPosts } from "../services/Auth";
 import NavBar from "../component/NavBar";
 import Aside from "../component/Aside";
 import { useState } from "react";
@@ -20,6 +20,7 @@ function UserProfile() {
   useEffect(() => {
     // getUserDetails(usernameid, userDispatch);
     getUserPosts(usernameid, userDispatch);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const user = allUsers?.find(({ username }) => usernameid === username);
   const { firstName, lastName, username, following, followers, imageURL, _id } =

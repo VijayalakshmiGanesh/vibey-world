@@ -9,8 +9,6 @@ import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import RequiresAuth from "./utils/RequiresAuth";
 import UserProfile from "./pages/UserProfile";
-import NavBar from "./component/NavBar";
-import Aside from "./component/Aside";
 
 function App() {
   return (
