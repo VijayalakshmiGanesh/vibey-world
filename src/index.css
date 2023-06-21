@@ -1,13 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-primary {
+    @apply w-3/4 p-2 m-3 rounded-md border border-2 border-gray-700 bg-[#ff059b] focus:outline-none focus:ring-2 focus:ring-[#ffa111] focus:ring-opacity-75;
+  }
+  .link {
+    @apply underline text-pink-700 font-semibold hover:text-white hover:no-underline;
+  }
+
+  .label {
+    @apply text-sm self-start px-2;
+  }
+
+  .input-text {
+    @apply p-2 m-1 rounded-md bg-[#2d2f3e];
+  }
+
+  .bg-primary {
+    @apply bg-[#111320];
+  }
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
