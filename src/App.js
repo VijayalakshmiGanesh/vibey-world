@@ -9,6 +9,8 @@ import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import RequiresAuth from "./utils/RequiresAuth";
 import UserProfile from "./pages/UserProfile";
+import Explore from "./pages/Explore";
+import Bookmarks from "./pages/Bookmarks";
 
 function App() {
   return (
@@ -31,6 +33,22 @@ function App() {
           element={
             <RequiresAuth>
               <UserProfile />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/explore"
+          element={
+            <RequiresAuth>
+              <Explore />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/bookmarks"
+          element={
+            <RequiresAuth>
+              <Bookmarks />
             </RequiresAuth>
           }
         />
