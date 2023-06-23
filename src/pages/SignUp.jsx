@@ -4,6 +4,7 @@ import { signUp } from "../services/Auth";
 import { validateNonEmptyText } from "../utils/regexValidations";
 import { useNavigate } from "react-router";
 import { NavLink } from "react-router-dom";
+import { useData } from "../context/DataContext";
 
 function SignUp() {
   const [enteredUsername, setEnteredUsername] = useState("");
@@ -11,6 +12,7 @@ function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const { datadispatch } = useData();
   const { userDispatch, setIsUserLoggedIn, isUserLoggedIn } = useAuth();
   const navigate = useNavigate();
 
@@ -26,7 +28,8 @@ function SignUp() {
         firstName,
         lastName,
         userDispatch,
-        setIsUserLoggedIn
+        setIsUserLoggedIn,
+        datadispatch
       );
   };
 

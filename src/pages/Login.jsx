@@ -3,10 +3,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { login } from "../services/Auth";
 import { validateNonEmptyText } from "../utils/regexValidations";
+import { useData } from "../context/DataContext";
 
 function Login() {
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
+  const { datadispatch } = useData();
   const { userDispatch, setIsUserLoggedIn, isUserLoggedIn } = useAuth();
   const navigate = useNavigate();
 
@@ -14,7 +16,13 @@ function Login() {
     e.preventDefault();
     validateNonEmptyText(enteredUsername) &&
       validateNonEmptyText(enteredPassword) &&
-      login(enteredUsername, enteredPassword, userDispatch, setIsUserLoggedIn);
+      login(
+        enteredUsername,
+        enteredPassword,
+        userDispatch,
+        setIsUserLoggedIn,
+        datadispatch
+      );
   };
 
   useEffect(() => {
