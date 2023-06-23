@@ -1,12 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AiOutlineHome, AiOutlineSearch } from "react-icons/ai";
-import { BiBookmark } from "react-icons/bi";
+import { BiBookmark, BiLogOut } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
+import { MdLogout } from "react-icons/md";
 import ProfileCard from "./ProfileCard";
 import { useAuth } from "../context/AuthContext";
+import { logout } from "../services/Auth";
 
 function NavBar() {
-  const { currentUserDetails } = useAuth();
+  const { currentUserDetails, setIsUserLoggedIn, userDispatch } = useAuth();
+  const navigate = useNavigate();
+
   return (
     <nav className="flex flex-col justify-between h-[90vh]">
       <div className="flex flex-col">
@@ -57,6 +61,18 @@ function NavBar() {
           </span>
           <span className="hidden md:inline"> Profile</span>
         </NavLink>
+        <button
+          onClick={() => {
+            logout(userDispatch, setIsUserLoggedIn);
+            navigate("/login");
+          }}
+          className="flex items-center text-lg p-2 m-1 hover:border hover:border-2 hover:border-gray-700 hover:bg-[#2d2f3e] rounded-lg"
+        >
+          <span className="px-1 text-2xl">
+            <MdLogout />
+          </span>
+          <span className="hidden md:inline"> Logout</span>
+        </button>
       </div>
       <NavLink to={`/profile/${currentUserDetails.username}`}>
         <ProfileCard
