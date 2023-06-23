@@ -139,3 +139,57 @@ export const deletePost = async (postToBeDeletedID, datadispatch) => {
     console.log(e);
   }
 };
+
+export const bookmarkPost = async (postToBeBookmarkedID, datadispatch) => {
+  try {
+    const response = await fetch(
+      `/api/users/bookmark/${postToBeBookmarkedID}`,
+      {
+        headers: { authorization: localStorage.getItem("key") },
+        method: "POST",
+      }
+    );
+    if (response.status === 200) {
+      datadispatch({
+        type: "GET_ALL_BOOKMARKED_POSTS",
+        payload: JSON.parse(response._bodyInit).bookmarks,
+      });
+    }
+    console.log(response);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const removeBookmarkPost = async (
+  postToBeUnbookmarkedID,
+  datadispatch
+) => {
+  try {
+    const response = await fetch(
+      `/api/users/remove-bookmark/${postToBeUnbookmarkedID}`,
+      {
+        headers: { authorization: localStorage.getItem("key") },
+        method: "POST",
+      }
+    );
+    if (response.status === 200) {
+      datadispatch({
+        type: "GET_ALL_BOOKMARKED_POSTS",
+        payload: JSON.parse(response._bodyInit).bookmarks,
+      });
+    }
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const getAllBookmarkedPosts = async (datadispatch) => {
+  try {
+    const response = await fetch("/api/users/bookmark/");
+
+    console.log(response);
+  } catch (e) {
+    console.log(e);
+  }
+};
