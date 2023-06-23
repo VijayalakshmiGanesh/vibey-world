@@ -1,10 +1,12 @@
-import { notifyError } from "../utils/Toasters";
+import { notifyError, notifySuccess } from "../utils/Toasters";
+import { getAllPosts } from "./Posts";
 
 export const login = async (
   username,
   password,
   userdispatch,
-  setIsUserLoggedIn
+  setIsUserLoggedIn,
+  datadispatch
 ) => {
   setIsUserLoggedIn(false);
   try {
@@ -23,6 +25,7 @@ export const login = async (
         payload: JSON.parse(response._bodyInit).foundUser,
       });
       setIsUserLoggedIn(true);
+      getAllPosts(datadispatch);
     } else {
       if (response.statusText === "Not Found") {
       }
@@ -38,7 +41,8 @@ export const signUp = async (
   firstName,
   lastName,
   userdispatch,
-  setIsUserLoggedIn
+  setIsUserLoggedIn,
+  datadispatch
 ) => {
   setIsUserLoggedIn(false);
   try {
@@ -59,11 +63,21 @@ export const signUp = async (
         payload: JSON.parse(response._bodyInit).createdUser,
       });
       setIsUserLoggedIn(true);
+      getAllPosts(datadispatch);
     } else {
     }
   } catch (e) {
     console.log(e);
   }
+};
+
+export const logout = (userdispatch, setIsUserLoggedIn) => {
+  setIsUserLoggedIn(false);
+  localStorage.removeItem("key");
+  userdispatch({
+    type: "SET_CURRENT_USER_DETAILS",
+    payload: {},
+  });
 };
 
 export const getUserPosts = async (username, userdispatch) => {
@@ -154,8 +168,31 @@ export const followUser = async (userIdToBeFollowed, userdispatch) => {
         payload: JSON.parse(response._bodyInit).user,
       });
       getAllUsers(userdispatch);
+      notifySuccess("Started following user successfully");
     }
-    console.log(JSON.parse(response._bodyInit));
+    console.log(response);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const unFollowUser = async (userIdToBeUnfollowed, userdispatch) => {
+  try {
+    const response = await fetch(
+      `/api/users/unfollow/${userIdToBeUnfollowed}`,
+      {
+        headers: { authorization: localStorage.getItem("key") },
+        method: "POST",
+      }
+    );
+    if (response.status === 200) {
+      userdispatch({
+        type: "SET_CURRENT_USER_DETAILS",
+        payload: JSON.parse(response._bodyInit).user,
+      });
+      getAllUsers(userdispatch);
+      notifySuccess("Unfollowed user successfully");
+    }
   } catch (e) {
     console.log(e);
   }
