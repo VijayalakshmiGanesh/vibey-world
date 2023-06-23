@@ -15,7 +15,7 @@ import { useState } from "react";
 import { useData } from "../context/DataContext";
 import { useAuth } from "../context/AuthContext";
 function PostCard({ post }) {
-  const { _id, username, content, likes, fullName } = post;
+  const { _id, username, content, likes, fullName, imgURL } = post;
 
   const { posts, datadispatch, bookmarks } = useData();
   const { currentUserDetails } = useAuth();
@@ -95,6 +95,15 @@ function PostCard({ post }) {
               </div>
             )}
           </div>
+        </p>
+        <p>
+          {imgURL && (
+            <img
+              src={imgURL}
+              alt="post"
+              className=" w-[35rem] h-[25rem] object-cover"
+            />
+          )}
         </p>
         {isEditingPost === _id ? (
           <textarea

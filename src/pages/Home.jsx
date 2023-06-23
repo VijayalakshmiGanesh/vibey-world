@@ -7,6 +7,7 @@ import { v4 as uuid } from "uuid";
 import Avatar from "react-avatar";
 import { AdvancedImage } from "@cloudinary/react";
 import { Cloudinary } from "@cloudinary/url-gen";
+import Axios from "axios";
 
 import { getAllPosts, newPost } from "../services/Posts";
 import { useData } from "../context/DataContext";
@@ -24,6 +25,15 @@ function Home() {
   const [displaySortOption, setDisplaySortOption] = useState(false);
   const [filteredPosts, setFilteredPosts] = useState(posts);
   const [newPostContent, setNewPostContent] = useState("");
+  const [filesSelected, setFilesSelected] = useState();
+
+  // Create a Cloudinary instance and set your cloud name.
+  const cld = new Cloudinary({ cloud: { cloudName: "dc1hrpwac" } });
+
+  // cld.image returns a CloudinaryImage with the configuration set.
+  const myImage = cld.image("sample");
+
+  // The URL of the image is: https://res.cloudinary.com/demo/image/upload/sample
 
   const filterPosts = () => {
     const currentFollowing = currentUserDetails?.following?.map(
@@ -56,22 +66,86 @@ function Home() {
     ];
   };
 
-  const newPostHander = () => {
-    newPost(
-      {
-        _id: uuid(),
-        content: newPostContent,
-        likes: {
-          likeCount: 0,
-          likedBy: [],
-          dislikedBy: [],
+  // var myWidget = cloudinary.createUploadWidget({
+  //   cloudName: 'my_cloud_name',
+  //   uploadPreset: 'my_preset'}, (error, result) => {
+  //     if (!error && result && result.event === "success") {
+  //       console.log('Done! Here is the image info: ', result.info);
+  //     }
+  //   }
+  // )
+
+  const uploadImg = async () => {
+    // const formData = new FormData();
+    // formData.append("file", filesSelected[0]);
+    // formData.append("upload_preset", "kdusi1ol");
+
+    // const response = await Axios.post(
+    //   "https://api.cloudinary.com/v1_1/dc1hrpwac/image/upload",
+    //   formData
+    // );
+
+    const formData = new FormData();
+
+    const CLOUDINARY_URL =
+      "https://api.cloudinary.com/v1_1/dc1hrpwac/image/upload";
+    const CLOUDINARY_UPLOAD_PRESET = "kdusi1ol";
+
+    formData.append("file", filesSelected[0]);
+    formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+    formData.append("folder", "posts");
+
+    return fetch(CLOUDINARY_URL, {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        return data;
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const newPostHander = async () => {
+    let response = "";
+
+    if (filesSelected[0] !== "") {
+      response = await uploadImg();
+      newPost(
+        {
+          _id: uuid(),
+          content: newPostContent,
+          likes: {
+            likeCount: 0,
+            likedBy: [],
+            dislikedBy: [],
+          },
+          username: currentUserDetails.username,
+          createdAt: formatDate(),
+          updatedAt: formatDate(),
+          imgURL: response?.url,
         },
-        username: currentUserDetails.username,
-        createdAt: formatDate(),
-        updatedAt: formatDate(),
-      },
-      datadispatch
-    );
+        datadispatch
+      );
+    } else {
+      newPost(
+        {
+          _id: uuid(),
+          content: newPostContent,
+          likes: {
+            likeCount: 0,
+            likedBy: [],
+            dislikedBy: [],
+          },
+          username: currentUserDetails.username,
+          createdAt: formatDate(),
+          updatedAt: formatDate(),
+          imgURL: "",
+        },
+        datadispatch
+      );
+    }
+    setFilesSelected("");
     setNewPostContent("");
   };
 
@@ -110,6 +184,11 @@ function Home() {
                 value={newPostContent}
                 onChange={(e) => setNewPostContent(e.target.value)}
               ></textarea>
+              <input
+                type="file"
+                // value={file}
+                onChange={(e) => setFilesSelected(e.target.files)}
+              />
               <button
                 className="absolute right-0 bottom-[-15px] btn-primary w-auto"
                 onClick={() => newPostHander()}

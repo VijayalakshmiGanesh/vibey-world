@@ -20,6 +20,7 @@ export const posts = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     fullName: "Adarsh Balika",
+    imgURL: "",
   },
   {
     _id: uuid(),
@@ -34,6 +35,7 @@ export const posts = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     fullName: "Shubham Soni",
+    imgURL: "",
   },
   {
     _id: uuid(),
@@ -48,6 +50,7 @@ export const posts = [
     createdAt: formatDate(),
     fullName: "Shubham Soni",
     updatedAt: new Date("2023-06-12T14:27:37+05:30"),
+    imgURL: "",
   },
   {
     _id: uuid(),
@@ -62,5 +65,6 @@ export const posts = [
     createdAt: formatDate(),
     fullName: "Viji ganesh",
     updatedAt: new Date("2023-06-12T14:27:37+05:30"),
+    imgURL: "",
   },
 ];
