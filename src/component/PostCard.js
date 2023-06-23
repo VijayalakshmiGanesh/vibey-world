@@ -1,20 +1,29 @@
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { BsThreeDots } from "react-icons/bs";
+import { BiBookmark } from "react-icons/bi";
 import Avatar from "react-avatar";
 
-import { deletePost, editPost, likePost, unlikePost } from "../services/Posts";
+import {
+  bookmarkPost,
+  deletePost,
+  editPost,
+  likePost,
+  removeBookmarkPost,
+  unlikePost,
+} from "../services/Posts";
 import { useState } from "react";
 import { useData } from "../context/DataContext";
 import { useAuth } from "../context/AuthContext";
 function PostCard({ post }) {
   const { _id, username, content, likes, fullName } = post;
 
-  const { posts, datadispatch } = useData();
+  const { posts, datadispatch, bookmarks } = useData();
   const { currentUserDetails } = useAuth();
   const [displayPostOptions, setDisplayPostOptions] = useState(false);
   const [isEditingPost, setIsEditingPost] = useState();
   const [editPostContent, setEditPostContent] = useState("");
 
+  console.log("bookmarks", bookmarks);
   const checkLikedList = (likedList) => {
     return (
       likedList.findIndex(
@@ -22,6 +31,9 @@ function PostCard({ post }) {
       ) === -1
     );
   };
+
+  const checkBookmarkList = (idToCheck) =>
+    bookmarks.findIndex((_id) => _id === idToCheck) === -1;
   return (
     <div
       className="m-3 border border-2 px-3 py-5 w-[35rem] bg-[#2d2f3e] flex"
@@ -108,6 +120,17 @@ function PostCard({ post }) {
               <AiFillHeart className="text-red-700 text-xl" />
             )}
             <span className="text-lg pl-2 ">{likes.likeCount}</span>
+          </button>
+          <button
+            onClick={() => {
+              checkBookmarkList(_id)
+                ? bookmarkPost(_id, datadispatch)
+                : removeBookmarkPost(_id, datadispatch);
+            }}
+          >
+            <BiBookmark
+              className={!checkBookmarkList(_id) && "text-green-500"}
+            />
           </button>
           {isEditingPost === _id && (
             <div className=" flex flex-row">
