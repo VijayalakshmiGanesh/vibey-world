@@ -78,6 +78,7 @@ function NavBar() {
         <ProfileCard
           name={`${currentUserDetails.firstName} ${currentUserDetails.lastName}`}
           username={currentUserDetails.username}
+          imageURL={currentUserDetails.imageURL}
         />
       </NavLink>
     </nav>

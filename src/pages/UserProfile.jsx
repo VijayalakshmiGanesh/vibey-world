@@ -74,7 +74,11 @@ function UserProfile() {
                 />
               ) : (
                 // <p></p>
-                <img src={imageURL} alt="display Pic" />
+                <img
+                  src={imageURL}
+                  alt="display Pic"
+                  className="w-[50px] h-[50px] rounded-full object-cover"
+                />
               )}
               <div className="text-left pl-5">
                 <p>

@@ -11,12 +11,13 @@ function Aside() {
       ) : (
         <>
           {allUsers.map(
-            ({ username, firstName, lastName }) =>
+            ({ username, firstName, lastName, imageURL }) =>
               username !== currentUserDetails.username && (
                 <NavLink to={`/profile/${username}`}>
                   <ProfileCard
                     name={`${firstName} ${lastName}`}
                     username={username}
+                    imageURL={imageURL}
                   />
                 </NavLink>
               )
