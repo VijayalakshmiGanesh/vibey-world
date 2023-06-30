@@ -1,7 +1,9 @@
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { BsThreeDots } from "react-icons/bs";
 import { BiBookmark } from "react-icons/bi";
+import { MdOutlineEmojiEmotions } from "react-icons/md";
 import Avatar from "react-avatar";
+import EmojiPicker from "emoji-picker-react";
 
 import {
   bookmarkPost,
@@ -11,19 +13,126 @@ import {
   removeBookmarkPost,
   unlikePost,
 } from "../services/Posts";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useData } from "../context/DataContext";
 import { useAuth } from "../context/AuthContext";
 function PostCard({ post }) {
-  const { _id, username, content, likes, fullName, imgURL } = post;
-
+  const { _id, username, content, likes, fullName, imgURL, createdAt } = post;
   const { posts, datadispatch, bookmarks } = useData();
-  const { currentUserDetails } = useAuth();
+  const { currentUserDetails, allUsers } = useAuth();
   const [displayPostOptions, setDisplayPostOptions] = useState(false);
   const [isEditingPost, setIsEditingPost] = useState();
   const [editPostContent, setEditPostContent] = useState("");
+  const [isEmojiKeypadDisplayed, setIsEmomjiKeypadDisplayed] = useState(false);
+  const [dateDiff, setDateDiff] = useState();
+  const [dp, setDp] = useState("");
 
-  console.log("bookmarks", bookmarks);
+  const calculateMonthsBetweenDates = (startDate, endDate) => {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    const months = (end.getFullYear() - start.getFullYear()) * 12;
+    const startMonth = start.getMonth();
+    const endMonth = end.getMonth();
+
+    const monthDiff = months + endMonth - startMonth;
+
+    return monthDiff;
+  };
+  function calculateWeeksBetweenDates(startDate, endDate) {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    const millisecondsPerWeek = 1000 * 60 * 60 * 24 * 7;
+
+    const timeDiff = Math.abs(end.getTime() - start.getTime());
+    const weeks = Math.floor(timeDiff / millisecondsPerWeek);
+
+    return weeks;
+  }
+  function calculateMinutesBetweenTimes(startTime, endTime) {
+    const start = new Date(startTime);
+    const end = new Date(endTime);
+
+    const timeDiff = Math.abs(end.getTime() - start.getTime());
+    const minutes = Math.floor(timeDiff / (1000 * 60));
+
+    return minutes;
+  }
+
+  const calculateTime = () => {
+    const currentDate = new Date();
+    const postTime = new Date(createdAt);
+
+    if (
+      currentDate.getFullYear() === postTime.getFullYear() &&
+      currentDate.getMonth() === postTime.getMonth() &&
+      (currentDate.getDate() === postTime.getDate() ||
+        currentDate.getDate() - postTime.getDate()) <= 1
+    ) {
+      if (
+        currentDate.getHours() === postTime.getHours() ||
+        calculateMinutesBetweenTimes(postTime, currentDate) <= 59
+      ) {
+        if (calculateMinutesBetweenTimes(postTime, currentDate) <= 1) {
+          console.log("CURR DATE ", currentDate);
+          console.log("CREATED AT ", postTime);
+          console.log(
+            "Inside sec- getHours",
+            currentDate.getHours() - postTime.getHours()
+          );
+          console.log(
+            "Inside mins- compare",
+            currentDate.getMinutes() === postTime.getMinutes()
+          );
+          return "A few seconds ago";
+        } else {
+          return `${currentDate.getMinutes() - postTime.getMinutes()} mins ago`;
+        }
+      } else {
+        return `${Math.floor(
+          calculateMinutesBetweenTimes(postTime, currentDate) / 60
+        )} hours ago`;
+      }
+    } else {
+      if (
+        currentDate.getFullYear() === postTime.getFullYear() &&
+        (currentDate.getMonth() === postTime.getMonth() ||
+          calculateMonthsBetweenDates(postTime, currentDate)) < 1
+      ) {
+        if (currentDate.getDate() - postTime.getDate() <= 7) {
+          return `${currentDate.getDate() - postTime.getDate()} days ago`;
+        } else {
+          // var dif = Math.round(currentDate.getDate() - postTime.getDate());
+          // return `${Math.round(dif / 1000 / 60 / 60 / 24 / 7)} weeks ago`;
+          return `${calculateWeeksBetweenDates(
+            postTime,
+            currentDate
+          )} weeks ago`;
+        }
+      } else {
+        if (
+          currentDate.getFullYear() - postTime.getFullYear() <= 1 ||
+          (currentDate.getFullYear() === postTime.getFullYear() &&
+            calculateMonthsBetweenDates(postTime, currentDate) >= 1)
+        ) {
+          return `${currentDate.getMonth() - postTime.getMonth()} months ago`;
+        } else {
+          return `${
+            currentDate.getFullYear() - postTime.getFullYear()
+          } years ago`;
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    const user = allUsers.find((user) => user.username === username);
+
+    setDp(user?.imageURL);
+    setDateDiff(calculateTime());
+  }, [allUsers, post]);
+
   const checkLikedList = (likedList) => {
     return (
       likedList.findIndex(
@@ -35,27 +144,34 @@ function PostCard({ post }) {
   const checkBookmarkList = (idToCheck) =>
     bookmarks.findIndex((_id) => _id === idToCheck) === -1;
   return (
-    <div
-      className="m-3 border border-2 px-3 py-5 w-[35rem] bg-[#2d2f3e] flex"
-      key={_id}
-    >
-      <Avatar
-        color={Avatar.getRandomColor("sitebase", [
-          // "rgb(251 146 60)",
-          "black",
+    <div className="mx-3 border border-slate-400 px-3 py-5 flex" key={_id}>
+      {!dp || dp.length === 0 ? (
+        <Avatar
+          color={Avatar.getRandomColor("sitebase", [
+            // "rgb(251 146 60)",
+            "black",
 
-          "blue",
-          "pink",
-        ])}
-        name={fullName}
-        size="50"
-        round={true}
-      />
+            "blue",
+            "pink",
+          ])}
+          name={fullName}
+          size="50"
+          round={true}
+        />
+      ) : (
+        <img
+          src={dp}
+          alt="dp"
+          className="w-[60px] h-[50px] px-1 rounded-full object-cover"
+        />
+      )}
       <div className="px-2 mx-2 grow">
         <p className="flex justify-between">
           <span>
             {fullName} &nbsp;
             <span className="text-pink-400">@{username}</span>
+            &nbsp;
+            {dateDiff}
           </span>
           <div
             className="relative"
@@ -78,8 +194,6 @@ function PostCard({ post }) {
                     () => {
                       setIsEditingPost(_id);
                       setEditPostContent(content);
-                      console.log("content", content);
-                      console.log("edit post content", editPostContent);
                     }
                     // editPost(_id, post, datadispatch)
                   }
@@ -106,11 +220,32 @@ function PostCard({ post }) {
           )}
         </p>
         {isEditingPost === _id ? (
-          <textarea
-            value={editPostContent}
-            onChange={(e) => setEditPostContent(e.target.value)}
-            className=" my-2 py-2 input-text border-0 resize-none w-full bg-inherit focus-visible:border-0 focus:outline-0"
-          ></textarea>
+          <p>
+            <textarea
+              value={editPostContent}
+              onChange={(e) => setEditPostContent(e.target.value)}
+              className=" my-2 py-2 input-text border-0 resize-none w-full bg-inherit focus-visible:border-0 focus:outline-0"
+            ></textarea>
+            <span className="relative">
+              <button
+                onClick={() => setIsEmomjiKeypadDisplayed((prev) => !prev)}
+                // onBlur={() =>
+                //   isEmojiKeypadDisplayed && setIsEmomjiKeypadDisplayed(false)
+                // }
+              >
+                <MdOutlineEmojiEmotions />
+              </button>
+              {isEmojiKeypadDisplayed && (
+                <span className="absolute top-5  right-2 mx-auto">
+                  <EmojiPicker
+                    onEmojiClick={(e) =>
+                      setEditPostContent((prev) => prev.concat(e.emoji))
+                    }
+                  />
+                </span>
+              )}
+            </span>
+          </p>
         ) : (
           <p className="text-left">{content}</p>
         )}
