@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
     "dayjs": "^1.11.8",
+    "emoji-picker-react": "^4.4.9",
     "jwt-decode": "^3.1.2",
     "jwt-encode": "^1.0.1",
     "mockman-js": "^1.1.5",
