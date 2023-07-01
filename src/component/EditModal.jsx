@@ -18,7 +18,6 @@ function EditModal({ userDetails, setIsEditBtnClicked }) {
     "http://getwallpapers.com/wallpaper/full/7/1/8/1246513-cool-neon-wallpapers-for-desktop-background-2560x1920-for-mobile-hd.jpg",
     "https://tse1.mm.bing.net/th?id=OIP.1wLzUlHVHganxQbVWXLdhAHaF7&pid=Api&P=0&h=180",
   ];
-  console.log("edit", userDetails);
   return (
     <div className="bg-[#00000080] top-0 left-0 fixed w-full h-full z-40 flex justify-center items-center">
       <div className="bg-primary p-5 w-[25rem]">
