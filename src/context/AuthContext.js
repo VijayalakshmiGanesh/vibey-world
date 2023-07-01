@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const [state, dispatch] = useReducer(userReducer, initialState);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-  console.log(state);
+
   return (
     <AuthContext.Provider
       value={{

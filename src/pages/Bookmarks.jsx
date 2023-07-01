@@ -7,12 +7,8 @@ function Bookmarks() {
   const { posts, bookmarks } = useData();
 
   const getBookmarkedPostsDetails = posts.filter(({ _id }) => {
-    console.log("check", _id, bookmarks);
-
     return bookmarks.includes(_id);
   });
-
-  console.log("__BOOKMARK__", getBookmarkedPostsDetails, "bookid", bookmarks);
 
   return (
     <div className="flex justify-center">

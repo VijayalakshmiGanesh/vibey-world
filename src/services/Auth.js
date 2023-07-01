@@ -85,7 +85,6 @@ export const getUserPosts = async (username, userdispatch) => {
     const response = await fetch(`/api/posts/user/${username}`);
 
     if (response.status === 200) {
-      console.log(JSON.parse(response._bodyInit).posts);
       userdispatch({
         type: "SET_USER_POSTS",
         payload: JSON.parse(response._bodyInit).posts,
@@ -103,7 +102,6 @@ export const getAllUsers = async (userdispatch) => {
     const response = await fetch("/api/users");
 
     if (response.status === 200) {
-      console.log(JSON.parse(response._bodyInit).users);
       userdispatch({
         type: "SET_ALL_USERS",
         payload: JSON.parse(response._bodyInit).users,
@@ -117,7 +115,6 @@ export const getAllUsers = async (userdispatch) => {
 };
 
 export const getUserDetails = async (username, userdispatch) => {
-  console.log("inside user detail");
   try {
     const response = await fetch(`/api/users/${username}`);
     if (response.status === 200) {

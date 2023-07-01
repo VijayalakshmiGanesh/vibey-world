@@ -51,11 +51,9 @@ export function validateNonEmptyText(textToValidate, flag) {
   const regex = /\S+/;
 
   if (regex.test(textToValidate)) {
-    console.log("non err", textToValidate);
     return true;
   } else {
     flag !== true && notifyError("Enter valid input");
-    console.log(textToValidate);
     return false;
   }
 }
