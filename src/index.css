@@ -15,11 +15,18 @@
   }
 
   .input-text {
-    @apply p-2 m-1 rounded-md bg-[#2d2f3e];
+    @apply p-2 m-1 rounded-md bg-[#2d2f3ea8];
   }
 
   .bg-primary {
     @apply bg-[#111320];
+  }
+
+  .surface-clr {
+    @apply bg-[#2d2f3e];
+  }
+  .my-font {
+    @apply font-['Exo_2'];
   }
 }
 
