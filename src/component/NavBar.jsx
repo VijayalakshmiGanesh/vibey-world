@@ -12,13 +12,11 @@ function NavBar() {
   const navigate = useNavigate();
 
   return (
-    // <nav className="flex flex-col justify-between h-screen fixed top-0 left-[10rem]">
-    <nav className="flex flex-col justify-between h-screen mx-5">
-      <div className="flex flex-col items-center sm:items-start justify-start py-1 gap-3 ">
-        {/* <div className="fixed bottom-0 left-[9rem]"> */}
+    <nav className="bg-[#000000c2] md:bg-inherit w-full md:flex md:flex-col md:justify-between md:h-screen md:mx-5">
+      <div className="flex bg-[#000000c2] fixed bottom-0 left-0 justify-around items-center md:static w-full  py-4 md:flex-col md:bg-inherit md:items-start md:justify-start md:py-1 md:gap-3 ">
         <NavLink
           to="/"
-          className="flex items-center text-lg p-2 m-1 hover:border hover:border-2 hover:border-gray-700 hover:bg-[#2d2f3ea8] rounded-lg"
+          className="hidden md:block md:flex md:items-center md:text-lg md:p-2 md:m-1 md:hover:border md:hover:border-2 md:hover:border-gray-700 md:hover:bg-[#2d2f3ea8] md:rounded-lg"
         >
           <img
             src="../assests/logo-copy-removebg-preview.png"
@@ -29,36 +27,36 @@ function NavBar() {
         </NavLink>
         <NavLink
           to="/"
-          className="flex items-center text-lg p-2 m-1 hover:border hover:border-2 hover:border-gray-700 hover:bg-[#2d2f3ea8] rounded-lg"
+          className="flex items-center md:flex md:items-center md:text-lg md:p-2 md:m-1 md:hover:border md:hover:border-2 md:hover:border-gray-700 md:hover:bg-[#2d2f3ea8] md:rounded-lg"
         >
-          <span className="px-1 text-2xl">
+          <span className="text-2xl md:px-1 ">
             <AiOutlineHome />
           </span>
           <span className="hidden md:inline"> Home</span>
         </NavLink>
         <NavLink
           to="/explore"
-          className="flex items-center text-lg p-2 m-1 hover:border hover:border-2 hover:border-gray-700 hover:bg-[#2d2f3ea8] rounded-lg"
+          className="flex items-center md:flex md:items-center md:text-lg md:p-2 md:m-1 md:hover:border md:hover:border-2 md:hover:border-gray-700 md:hover:bg-[#2d2f3ea8] md:rounded-lg"
         >
-          <span className="px-1 text-2xl">
+          <span className="text-2xl md:px-1">
             <AiOutlineSearch />
           </span>
           <span className="hidden md:inline"> Explore</span>
         </NavLink>
         <NavLink
           to="/bookmarks"
-          className="flex items-center text-lg p-2 m-1 hover:border hover:border-2 hover:border-gray-700 hover:bg-[#2d2f3ea8] rounded-lg"
+          className="flex items-center md:flex md:items-center md:text-lg md:p-2 md:m-1 md:hover:border md:hover:border-2 md:hover:border-gray-700 md:hover:bg-[#2d2f3ea8] md:rounded-lg"
         >
-          <span className="px-1 text-2xl">
+          <span className="text-2xl md:px-1">
             <BiBookmark />
           </span>
           <span className="hidden md:inline"> Bookmarks</span>
         </NavLink>
         <NavLink
           to={`/profile/${currentUserDetails.username}`}
-          className="flex items-center text-lg p-2 m-1 hover:border hover:border-2 hover:border-gray-700 hover:bg-[#2d2f3ea8] rounded-lg"
+          className="flex items-center md:flex md:items-center md:text-lg md:p-2 md:m-1 md:hover:border md:hover:border-2 md:hover:border-gray-700 md:hover:bg-[#2d2f3ea8] md:rounded-lg"
         >
-          <span className="px-1 text-2xl">
+          <span className="text-2xl md:px-1">
             <CgProfile />
           </span>
           <span className="hidden md:inline"> Profile</span>
@@ -68,23 +66,23 @@ function NavBar() {
             logout(userDispatch, setIsUserLoggedIn);
             navigate("/login");
           }}
-          className="flex items-center text-lg p-2 m-1 hover:border hover:border-2 hover:border-gray-700 hover:bg-[#2d2f3ea8] rounded-lg"
+          className="flex items-center md:flex md:items-center md:text-lg md:p-2 md:m-1 md:hover:border md:hover:border-2 md:hover:border-gray-700 md:hover:bg-[#2d2f3ea8] md:rounded-lg"
         >
-          <span className="px-1 text-2xl">
+          <span className="text-2xl md:px-1">
             <MdLogout />
           </span>
           <span className="hidden md:inline"> Logout</span>
         </button>
       </div>
-      <NavLink to={`/profile/${currentUserDetails.username}`}>
-        <ProfileCard
-          name={`${currentUserDetails.firstName} ${currentUserDetails.lastName}`}
-          username={currentUserDetails.username}
-          imageURL={currentUserDetails.imageURL}
-        />
-      </NavLink>
-
-      {/* </div> */}
+      <div className="hidden md:inline">
+        <NavLink to={`/profile/${currentUserDetails.username}`}>
+          <ProfileCard
+            name={`${currentUserDetails.firstName} ${currentUserDetails.lastName}`}
+            username={currentUserDetails.username}
+            imageURL={currentUserDetails.imageURL}
+          />
+        </NavLink>
+      </div>
     </nav>
   );
 }

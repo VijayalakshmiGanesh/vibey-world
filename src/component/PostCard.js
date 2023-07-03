@@ -157,7 +157,7 @@ function PostCard({ post }) {
   };
   return (
     <div
-      className="hover:surface-clr border border-slate-400 px-3 py-5 flex w-full mx-2"
+      className="hover:surface-clr border-b md:border border-gray-700 px-3 py-5 flex w-full md:mx-2"
       key={_id}
     >
       <NavLink to={`/profile/${userId?.username}`}>
@@ -185,8 +185,10 @@ function PostCard({ post }) {
       <div className="px-2 mx-2 grow">
         <p className="flex justify-between">
           <span className="flex items-center">
-            <span className="text-lg font-semibold">{fullName} &nbsp;</span>
-            <span className="text-slate-400 text-sm">@{username} &nbsp;</span>
+            <span className="md:text-lg font-semibold">{fullName} &nbsp;</span>
+            <span className="text-slate-400 text-sm hidden sm:inline">
+              @{username} &nbsp;
+            </span>
             <span className="flex items-center text-slate-400 text-sm">
               <span className="leading-3 self-start">.</span>
               <span>{dateDiff}</span>

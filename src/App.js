@@ -24,7 +24,7 @@ function App() {
       className={`App ${
         location?.pathname !== "/login" &&
         location?.pathname !== "/signup" &&
-        "flex justify-center"
+        "md:flex md:justify-center"
       }`}
     >
       {/* {location?.pathname !== "/login" && location?.pathname !== "/signup" && ( */}

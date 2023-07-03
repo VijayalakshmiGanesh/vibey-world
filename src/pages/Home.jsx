@@ -155,7 +155,7 @@ function Home() {
     //   <div className=" px-5 pr-[13rem]">
     //     <NavBar />
     //   </div> */}
-      <div className="w-[40rem] ">
+      <div className="w-full lg:w-[40rem] ">
         {isLoading ? (
           <span className="flex items-center justify-center h-screen text-2xl">
             {" "}
@@ -164,7 +164,7 @@ function Home() {
         ) : (
           <>
             <div>
-              <div className="flex justify-start border border-slate-400 p-3 my-3 mx-5">
+              <div className="flex justify-start border-b md:border border-slate-400 p-3 my-3 md:mx-5">
                 <Avatar
                   name={`${currentUserDetails.firstName} ${currentUserDetails.lastName}`}
                   round={true}
@@ -290,7 +290,7 @@ function Home() {
                 </div>
               </p>
             </div>
-            <div className="flex flex-col items-center m-2 flex-wrap">
+            <div className="flex flex-col items-center my-2 md:m-2 flex-wrap">
               {filteredPosts?.length === 0 ? (
                 <p>No Posts</p>
               ) : (
