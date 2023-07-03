@@ -9,6 +9,7 @@ import { formatDate } from "../utils/authUtils";
 export const posts = [
   {
     _id: uuid(),
+    comments: [],
     content:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
     likes: {
@@ -24,6 +25,7 @@ export const posts = [
   },
   {
     _id: uuid(),
+    comments: [],
     content: "How to make the worls a better place??????? ",
     likes: {
       likeCount: 0,
@@ -38,6 +40,7 @@ export const posts = [
   },
   {
     _id: uuid(),
+    comments: [],
     content: `Go for a 15 minute walk every morning.
 
       No fancy morning routine—just go for a walk.
@@ -57,6 +60,7 @@ export const posts = [
   },
   {
     _id: uuid(),
+    comments: [],
     content:
       "2 week At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
     likes: {
@@ -72,6 +76,7 @@ export const posts = [
   },
   {
     _id: uuid(),
+    comments: [],
     content: "Feelin a lil luminous off late👑🌟",
     likes: {
       likeCount: 0,
@@ -87,6 +92,7 @@ export const posts = [
   },
   {
     _id: uuid(),
+    comments: [],
     content: "PS team💞🧿",
     likes: {
       likeCount: 0,
@@ -102,6 +108,7 @@ export const posts = [
   },
   {
     _id: uuid(),
+    comments: [],
     content: "PS team💞🧿",
     likes: {
       likeCount: 0,
@@ -117,6 +124,7 @@ export const posts = [
   },
   {
     _id: uuid(),
+    comments: [],
     content: "Bakthi mode ON",
     likes: {
       likeCount: 0,
@@ -132,6 +140,7 @@ export const posts = [
   },
   {
     _id: uuid(),
+    comments: [],
     content: "Not a Play Boy",
     likes: {
       likeCount: 0,
@@ -147,6 +156,7 @@ export const posts = [
   },
   {
     _id: uuid(),
+    comments: [],
     content: "TB - In the sets of Ayan",
     likes: {
       likeCount: 0,
@@ -162,6 +172,7 @@ export const posts = [
   },
   {
     _id: uuid(),
+    comments: [],
     content:
       "Keezhadi Museum is stunning! Its a must visit Centre to understand our Tamil legacy that spans 2600 years. Our history & its continuation is unique & it was a momentous visit for us to learn how our Tamilians had lived. Its a lesson for our future. Thanks to our Tamilnadu Government for setting up this Museum.",
     likes: {
