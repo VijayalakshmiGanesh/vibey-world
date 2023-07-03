@@ -1,5 +1,5 @@
 import Mockman from "mockman-js";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -11,11 +11,40 @@ import RequiresAuth from "./utils/RequiresAuth";
 import UserProfile from "./pages/UserProfile";
 import Explore from "./pages/Explore";
 import Bookmarks from "./pages/Bookmarks";
+import PostDetail from "./pages/PostDetail";
+import NavBar from "./component/NavBar";
+import Aside from "./component/Aside";
 
 function App() {
+  const location = useLocation();
+
+  console.log(
+    location,
+    location?.pathname !== "/login" && location?.pathname !== "/signup"
+      ? "block"
+      : "hidden"
+  );
   return (
-    <div className="App ">
-      {/* <NavBar /> */}
+    // <div className="App flex justify-center " >
+    <div
+      className={`App ${
+        location?.pathname !== "/login" &&
+        location?.pathname !== "/signup" &&
+        "flex justify-center"
+      }`}
+    >
+      {/* {location?.pathname !== "/login" && location?.pathname !== "/signup" && ( */}
+      <div
+        className={`${
+          location?.pathname !== "/login" && location?.pathname !== "/signup"
+            ? "block"
+            : "hidden"
+        }`}
+      >
+        <NavBar />
+      </div>
+
+      {/* )} */}
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
@@ -52,6 +81,14 @@ function App() {
             </RequiresAuth>
           }
         />
+        <Route
+          path={`/post/:postId`}
+          element={
+            <RequiresAuth>
+              <PostDetail />
+            </RequiresAuth>
+          }
+        />
       </Routes>
       <ToastContainer
         position="top-right"
@@ -65,7 +102,15 @@ function App() {
         pauseOnHover
         theme="dark"
       />
-      {/* <Aside /> */}
+      <div
+        className={`${
+          location?.pathname !== "/login" && location?.pathname !== "/signup"
+            ? "block"
+            : "hidden"
+        }`}
+      >
+        <Aside />
+      </div>
     </div>
   );
 }
