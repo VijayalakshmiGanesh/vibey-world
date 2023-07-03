@@ -11,6 +11,7 @@ export const DataProvider = ({ children }) => {
         datadispatch: dispatch,
         posts: state?.posts,
         bookmarks: state?.bookmarkPosts,
+        postDetail: state?.postDetail,
       }}
     >
       {children}
