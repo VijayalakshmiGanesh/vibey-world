@@ -19,8 +19,8 @@ import { formatDate } from "../backend/utils/authUtils";
 import { useAuth } from "../context/AuthContext";
 import { getAllUsers } from "../services/Auth";
 import PostCard from "../component/PostCard";
-import NavBar from "../component/NavBar";
-import Aside from "../component/Aside";
+// import NavBar from "../component/NavBar";
+// import Aside from "../component/Aside";
 import Loader from "../component/Loaders";
 
 function Home() {

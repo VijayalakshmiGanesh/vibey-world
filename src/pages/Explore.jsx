@@ -1,7 +1,7 @@
 import { AiOutlineArrowLeft } from "react-icons/ai";
 
-import Aside from "../component/Aside";
-import NavBar from "../component/NavBar";
+// import Aside from "../component/Aside";
+// import NavBar from "../component/NavBar";
 import { useData } from "../context/DataContext";
 import PostCard from "../component/PostCard";
 import { useNavigate } from "react-router";

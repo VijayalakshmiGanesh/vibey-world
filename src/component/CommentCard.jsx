@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { NavLink } from "react-router-dom";
 
 import Avatar from "react-avatar";

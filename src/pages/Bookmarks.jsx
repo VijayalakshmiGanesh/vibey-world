@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 
-import Aside from "../component/Aside";
-import NavBar from "../component/NavBar";
+// import Aside from "../component/Aside";
+// import NavBar from "../component/NavBar";
 import PostCard from "../component/PostCard";
 import { useData } from "../context/DataContext";
 

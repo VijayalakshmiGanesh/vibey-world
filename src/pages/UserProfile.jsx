@@ -8,8 +8,8 @@ import { BsLink45Deg } from "react-icons/bs";
 import { FaUserFriends } from "react-icons/fa";
 
 import { followUser, getUserPosts, unFollowUser } from "../services/Auth";
-import NavBar from "../component/NavBar";
-import Aside from "../component/Aside";
+// import NavBar from "../component/NavBar";
+// import Aside from "../component/Aside";
 import { useState } from "react";
 import EditModal from "../component/EditModal";
 import { Link } from "react-router-dom";
