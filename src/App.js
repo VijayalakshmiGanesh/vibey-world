@@ -18,12 +18,6 @@ import Aside from "./component/Aside";
 function App() {
   const location = useLocation();
 
-  console.log(
-    location,
-    location?.pathname !== "/login" && location?.pathname !== "/signup"
-      ? "block"
-      : "hidden"
-  );
   return (
     // <div className="App flex justify-center " >
     <div
