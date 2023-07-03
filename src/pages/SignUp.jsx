@@ -58,7 +58,7 @@ function SignUp() {
             </span>
             <form>
               <p className="flex flex-col  my-3">
-                <label className="label" for="username">
+                <label className="label" htmlFor="username">
                   Username:
                 </label>
                 <input
@@ -71,7 +71,7 @@ function SignUp() {
               </p>
               <p className="flex flex-col md:flex-row my-3">
                 <span className="flex flex-col">
-                  <label className="label" for="firstName">
+                  <label className="label" htmlFor="firstName">
                     First Name:
                   </label>
                   <input
@@ -83,7 +83,7 @@ function SignUp() {
                   />
                 </span>
                 <span className="flex flex-col">
-                  <label className="label" for="lastName">
+                  <label className="label" htmlFor="lastName">
                     Last Name:
                   </label>
                   <input
@@ -96,7 +96,7 @@ function SignUp() {
                 </span>
               </p>
               <p className="flex flex-col  my-3">
-                <label className="label" for="password">
+                <label className="label" htmlFor="password">
                   Password:
                 </label>
                 <input
@@ -108,7 +108,7 @@ function SignUp() {
                 />
               </p>
               <p className="flex flex-col  my-3">
-                <label className="label" for="confirmPassword">
+                <label className="label" htmlFor="confirmPassword">
                   Confirm Password:
                 </label>
                 <input

@@ -42,7 +42,7 @@ function Login() {
           <img src="../assests/logo-copy-removebg-preview.png" alt="Logo" />
           <form>
             <p className="flex flex-col my-3">
-              <label for="username" className="label">
+              <label htmlFor="username" className="label">
                 Username
               </label>
               <input
@@ -55,7 +55,7 @@ function Login() {
               />
             </p>
             <p className="flex flex-col my-3">
-              <label for="password" className="label">
+              <label htmlFor="password" className="label">
                 Password
               </label>
               <input

@@ -35,7 +35,7 @@ function Aside() {
   }, [userToSearch]);
   return (
     // <aside className="mx-7"> fixed top-0 right-[6rem] hidden lg:block
-    <aside className="mx-5">
+    <aside className="mx-5 hidden md:block">
       <p>Search users</p>
       <input
         type="text"
@@ -69,7 +69,10 @@ function Aside() {
             {whoToFollowList.map(
               ({ username, firstName, lastName, imageURL, _id }) =>
                 username !== currentUserDetails.username && (
-                  <p className="flex items-center justify-between text-sm hover:surface-clr ">
+                  <div
+                    className=" flex items-center justify-between text-sm hover:surface-clr "
+                    key={_id}
+                  >
                     <NavLink to={`/profile/${username}`}>
                       <ProfileCard
                         name={`${firstName} ${lastName}`}
@@ -83,7 +86,7 @@ function Aside() {
                     >
                       Follow
                     </button>
-                  </p>
+                  </div>
                 )
             )}
           </>
