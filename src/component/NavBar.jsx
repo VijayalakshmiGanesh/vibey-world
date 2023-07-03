@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { AiOutlineHome, AiOutlineSearch } from "react-icons/ai";
-import { BiBookmark, BiLogOut } from "react-icons/bi";
+import { BiBookmark } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import { MdLogout } from "react-icons/md";
 import ProfileCard from "./ProfileCard";
@@ -12,11 +12,13 @@ function NavBar() {
   const navigate = useNavigate();
 
   return (
-    <nav className="flex flex-col justify-between h-[90vh]">
-      <div className="flex flex-col">
+    // <nav className="flex flex-col justify-between h-screen fixed top-0 left-[10rem]">
+    <nav className="flex flex-col justify-between h-screen mx-5">
+      <div className="flex flex-col items-center sm:items-start justify-start py-1 gap-3 ">
+        {/* <div className="fixed bottom-0 left-[9rem]"> */}
         <NavLink
           to="/"
-          className="flex items-center text-lg p-2 m-1 hover:border hover:border-2 hover:border-gray-700 hover:bg-[#2d2f3e] rounded-lg"
+          className="flex items-center text-lg p-2 m-1 hover:border hover:border-2 hover:border-gray-700 hover:bg-[#2d2f3ea8] rounded-lg"
         >
           <img
             src="../assests/logo-copy-removebg-preview.png"
@@ -27,7 +29,7 @@ function NavBar() {
         </NavLink>
         <NavLink
           to="/"
-          className="flex items-center text-lg p-2 m-1 hover:border hover:border-2 hover:border-gray-700 hover:bg-[#2d2f3e] rounded-lg"
+          className="flex items-center text-lg p-2 m-1 hover:border hover:border-2 hover:border-gray-700 hover:bg-[#2d2f3ea8] rounded-lg"
         >
           <span className="px-1 text-2xl">
             <AiOutlineHome />
@@ -36,7 +38,7 @@ function NavBar() {
         </NavLink>
         <NavLink
           to="/explore"
-          className="flex items-center text-lg p-2 m-1 hover:border hover:border-2 hover:border-gray-700 hover:bg-[#2d2f3e] rounded-lg"
+          className="flex items-center text-lg p-2 m-1 hover:border hover:border-2 hover:border-gray-700 hover:bg-[#2d2f3ea8] rounded-lg"
         >
           <span className="px-1 text-2xl">
             <AiOutlineSearch />
@@ -45,7 +47,7 @@ function NavBar() {
         </NavLink>
         <NavLink
           to="/bookmarks"
-          className="flex items-center text-lg p-2 m-1 hover:border hover:border-2 hover:border-gray-700 hover:bg-[#2d2f3e] rounded-lg"
+          className="flex items-center text-lg p-2 m-1 hover:border hover:border-2 hover:border-gray-700 hover:bg-[#2d2f3ea8] rounded-lg"
         >
           <span className="px-1 text-2xl">
             <BiBookmark />
@@ -54,7 +56,7 @@ function NavBar() {
         </NavLink>
         <NavLink
           to={`/profile/${currentUserDetails.username}`}
-          className="flex items-center text-lg p-2 m-1 hover:border hover:border-2 hover:border-gray-700 hover:bg-[#2d2f3e] rounded-lg"
+          className="flex items-center text-lg p-2 m-1 hover:border hover:border-2 hover:border-gray-700 hover:bg-[#2d2f3ea8] rounded-lg"
         >
           <span className="px-1 text-2xl">
             <CgProfile />
@@ -66,7 +68,7 @@ function NavBar() {
             logout(userDispatch, setIsUserLoggedIn);
             navigate("/login");
           }}
-          className="flex items-center text-lg p-2 m-1 hover:border hover:border-2 hover:border-gray-700 hover:bg-[#2d2f3e] rounded-lg"
+          className="flex items-center text-lg p-2 m-1 hover:border hover:border-2 hover:border-gray-700 hover:bg-[#2d2f3ea8] rounded-lg"
         >
           <span className="px-1 text-2xl">
             <MdLogout />
@@ -81,6 +83,8 @@ function NavBar() {
           imageURL={currentUserDetails.imageURL}
         />
       </NavLink>
+
+      {/* </div> */}
     </nav>
   );
 }
