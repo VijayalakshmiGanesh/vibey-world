@@ -140,6 +140,21 @@ export const deletePost = async (postToBeDeletedID, datadispatch) => {
   }
 };
 
+export const getPost = async (postId, datadispatch) => {
+  try {
+    const response = await fetch(`/api/posts/${postId}`);
+    // console.log(response);
+    if (response.status === 200) {
+      datadispatch({
+        type: "GET_POST_DETAIL",
+        payload: JSON.parse(response._bodyInit).post,
+      });
+    }
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 export const bookmarkPost = async (postToBeBookmarkedID, datadispatch) => {
   try {
     const response = await fetch(
@@ -189,6 +204,71 @@ export const getAllBookmarkedPosts = async (datadispatch) => {
     const response = await fetch("/api/users/bookmark/");
 
     console.log(response);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const addCommentToPost = async (comments, postId, datadispatch) => {
+  // console.log("YOO", JSON.stringify({ commentData: comments }));
+  try {
+    const response = await fetch(`/api/comments/add/${postId}`, {
+      headers: { authorization: localStorage.getItem("key") },
+      body: JSON.stringify({ commentData: { comments } }),
+      method: "POST",
+    });
+    // console.log(comments, postId, response);
+    if (response.status === 201) {
+      console.log("IN", JSON.parse(response._bodyInit).posts);
+      datadispatch({
+        type: "GET_LISTS_OF_POSTS",
+        payload: JSON.parse(response._bodyInit).posts,
+      });
+      datadispatch({
+        type: "GET_POST_DETAIL",
+        payload: JSON.parse(response._bodyInit).posts.find(
+          ({ _id }) => _id === postId
+        ),
+      });
+    }
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const editComment = async (postId, datadispatch) => {
+  try {
+    const response = await fetch(`/api/comments/add/${postId}`, {
+      headers: { authorization: localStorage.getItem("key") },
+      method: "POST",
+    });
+    console.log(response);
+    if (response.status === 201) {
+      // console.log(response);
+      // datadispatch({
+      //   type: "GET_LISTS_OF_POSTS",
+      //   payload: JSON.parse(response._bodyInit).posts,
+      // });
+    }
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const deleteCommentToPost = async (postId, commentId, datadispatch) => {
+  try {
+    const response = await fetch(`/api/comments/edit/${postId}/${commentId}`, {
+      headers: { authorization: localStorage.getItem("key") },
+      method: "POST",
+    });
+    console.log(response);
+    if (response.status === 201) {
+      // console.log(response);
+      // datadispatch({
+      //   type: "GET_LISTS_OF_POSTS",
+      //   payload: JSON.parse(response._bodyInit).posts,
+      // });
+    }
   } catch (e) {
     console.log(e);
   }
