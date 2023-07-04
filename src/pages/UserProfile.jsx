@@ -52,7 +52,7 @@ function UserProfile() {
     //     <NavBar />
     //   </div>
     <div>
-      <div className="w-[40rem]">
+      <div className="w-full lg:w-[40rem]">
         <div className="flex justify-start p-3">
           <button
             onClick={() => navigate(-1)}
