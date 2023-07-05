@@ -93,7 +93,7 @@ function UserProfile() {
                 />
               )}
 
-              <div className="text-left pl-5 w-[30rem] flex-1 flex-grow">
+              <div className="text-left pl-5 md:w-[30rem] flex-1 flex-grow">
                 <div className="flex justify-between items-start">
                   <div>
                     <p className="text-2xl font-bold my-font">
