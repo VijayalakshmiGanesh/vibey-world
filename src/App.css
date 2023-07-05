@@ -17,7 +17,9 @@ body {
 .App {
   text-align: center;
 }
-
+.infinite-scroll-component {
+  overflow: hidden !important;
+}
 /* font-family: 'Exo 2', sans-serif;
 font-family: 'Noto Serif JP', serif;
 font-family: 'Satisfy', cursive;

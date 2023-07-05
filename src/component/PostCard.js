@@ -157,7 +157,7 @@ function PostCard({ post }) {
   };
   return (
     <div
-      className="hover:surface-clr border-b md:border border-gray-700 px-3 py-5 flex w-full md:mx-2"
+      className="hover:surface-clr border-b md:border border-gray-700 px-3 py-5 flex w-full "
       key={_id}
     >
       <NavLink to={`/profile/${userId?.username}`}>
