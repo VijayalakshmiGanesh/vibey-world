@@ -164,17 +164,17 @@ function PostDetail() {
 
   useEffect(() => {
     getPost(postId, datadispatch);
-  }, [posts]);
+  }, [posts, postId]);
   useEffect(() => {
     setIsLoading(true);
     getPost(postId, datadispatch);
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
-  }, [postId]);
+  }, []);
 
   return (
-    <div className="w-[40rem]">
+    <div className="w-full lg:w-[40rem]">
       <div className="flex justify-start p-3 my-1">
         <button
           onClick={() => navigate(-1)}
@@ -482,18 +482,17 @@ function PostDetail() {
               </button>
             </p>
             {/* <div className="border-x border-slate-700 w-full"> */}
-            {postDetail?.comments?.length === 0 ? (
-              <p className="bg-yellow-500/[0.3] w-full text-xl p-3 my-3 rounded">
-                Be the first one to comment
-              </p>
-            ) : (
-              [
-                ...postDetail?.comments?.sort(
-                  (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-                ),
-              ]?.map((comment) => <CommentCard comment={comment} />)
-            )}
-            {/* </div> */}
+            <div>
+              {!postDetail?.comments && postDetail?.comments?.length === 0 ? (
+                <p className="bg-yellow-500/[0.3] w-full text-xl p-3 my-3 rounded">
+                  Be the first one to comment
+                </p>
+              ) : (
+                (postDetail?.comments || [])
+                  .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                  .map((comment) => <CommentCard comment={comment} />)
+              )}
+            </div>
           </div>
         </>
       )}
