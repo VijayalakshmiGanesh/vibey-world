@@ -194,12 +194,6 @@ function UserProfile() {
                   //   <PostCard post={post} />
                   // ))
                 }
-                {isEditBtnClicked && (
-                  <EditModal
-                    userDetails={user}
-                    setIsEditBtnClicked={setIsEditBtnClicked}
-                  />
-                )}
               </>
             )}
           </div>
@@ -208,6 +202,12 @@ function UserProfile() {
               followList={listName === "Followers" ? followers : following}
               ListName={listName}
               CloseButton={setIsListDisplayed}
+            />
+          )}
+          {isEditBtnClicked && (
+            <EditModal
+              userDetails={user}
+              setIsEditBtnClicked={setIsEditBtnClicked}
             />
           )}
         </main>
