@@ -68,8 +68,9 @@ function Aside() {
         ) : (
           <>
             {whoToFollowList.map(
-              ({ username, firstName, lastName, imageURL, _id }) =>
-                username !== currentUserDetails.username && (
+              ({ username, firstName, lastName, imageURL, _id }, index) =>
+                username !== currentUserDetails.username &&
+                index < 3 && (
                   <div
                     className=" flex items-center justify-between text-sm hover:surface-clr "
                     key={_id}
