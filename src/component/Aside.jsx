@@ -13,14 +13,15 @@ function Aside() {
   const [whoToFollowList, setWhoToFollowList] = useState(allUsers);
 
   useEffect(() => {
-    setWhoToFollowList(
-      allUsers.filter(
-        ({ username }) =>
-          !currentUserDetails.following
-            .map(({ username }) => username)
-            .includes(username) && currentUserDetails.username !== username
-      )
-    );
+    currentUserDetails &&
+      setWhoToFollowList(
+        allUsers?.filter(
+          ({ username }) =>
+            !currentUserDetails?.following
+              ?.map(({ username }) => username)
+              ?.includes(username) && currentUserDetails.username !== username
+        )
+      );
   }, [currentUserDetails?.following, allUsers]);
 
   useEffect(() => {
