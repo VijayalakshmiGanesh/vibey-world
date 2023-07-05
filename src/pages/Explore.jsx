@@ -22,14 +22,7 @@ function Explore() {
   const [pageNumber, setPageNumber] = useState(2);
 
   const fetchData = () => {
-    // console.log(
-    //   "Check",
-    //   filteredPosts?.length,
-    //   postsToDisplay?.length,
-    //   filteredPosts?.length > postsToDisplay?.length
-    // );
     if (filteredPosts?.length > postsToDisplay?.length) {
-      // console.log("filt", filteredPosts);
       setTimeout(() => {
         const start = (pageNumber - 1) * 3;
         const end =
@@ -65,10 +58,6 @@ function Explore() {
     setPostsToDisplay(filteredPosts.slice(0, 3));
   }, []);
   return (
-    // <div className="flex justify-start">
-    //   <div className=" px-5 pr-[13rem]">
-    //     <NavBar />
-    //   </div>
     <div>
       <div className="w-full lg:w-[40rem]">
         <div className="flex justify-start p-3 my-1">
