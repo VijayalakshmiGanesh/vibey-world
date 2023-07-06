@@ -22,14 +22,13 @@ function App() {
     // <div className="App flex justify-center " >
     <div
       className={`App ${
-        location?.pathname !== "/login" &&
-        location?.pathname !== "/signup" &&
-        "md:flex md:justify-center"
+        location?.pathname !== "/login" && location?.pathname !== "/signup"
+          ? "md:flex md:justify-center gridd"
+          : ""
       }`}
     >
-      {/* {location?.pathname !== "/login" && location?.pathname !== "/signup" && ( */}
       <div
-        className={`${
+        className={` ${
           location?.pathname !== "/login" && location?.pathname !== "/signup"
             ? "block"
             : "hidden"
@@ -37,73 +36,74 @@ function App() {
       >
         <NavBar />
       </div>
+      <div className="overflow-y-scroll">
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/apitest" element={<Mockman />} />
+          <Route
+            path="/"
+            element={
+              <RequiresAuth>
+                <Home />
+              </RequiresAuth>
+            }
+          />
+          <Route
+            path="/profile/:usernameid"
+            element={
+              <RequiresAuth>
+                <UserProfile />
+              </RequiresAuth>
+            }
+          />
+          <Route
+            path="/explore"
+            element={
+              <RequiresAuth>
+                <Explore />
+              </RequiresAuth>
+            }
+          />
+          <Route
+            path="/bookmarks"
+            element={
+              <RequiresAuth>
+                <Bookmarks />
+              </RequiresAuth>
+            }
+          />
+          <Route
+            path={`/post/:postId`}
+            element={
+              <RequiresAuth>
+                <PostDetail />
+              </RequiresAuth>
+            }
+          />
+        </Routes>
+      </div>
 
-      {/* )} */}
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/apitest" element={<Mockman />} />
-        <Route
-          path="/"
-          element={
-            <RequiresAuth>
-              <Home />
-            </RequiresAuth>
-          }
-        />
-        <Route
-          path="/profile/:usernameid"
-          element={
-            <RequiresAuth>
-              <UserProfile />
-            </RequiresAuth>
-          }
-        />
-        <Route
-          path="/explore"
-          element={
-            <RequiresAuth>
-              <Explore />
-            </RequiresAuth>
-          }
-        />
-        <Route
-          path="/bookmarks"
-          element={
-            <RequiresAuth>
-              <Bookmarks />
-            </RequiresAuth>
-          }
-        />
-        <Route
-          path={`/post/:postId`}
-          element={
-            <RequiresAuth>
-              <PostDetail />
-            </RequiresAuth>
-          }
-        />
-      </Routes>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
       <div
-        className={`${
+        className={` ${
           location?.pathname !== "/login" && location?.pathname !== "/signup"
-            ? "block"
+            ? "block "
             : "hidden"
         }`}
       >
         <Aside />
+        {/* <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        /> */}
       </div>
     </div>
   );

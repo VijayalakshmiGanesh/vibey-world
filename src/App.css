@@ -17,6 +17,13 @@ body {
 .App {
   text-align: center;
 }
+.gridd {
+  max-width: 1280px;
+  display: grid;
+  grid-template-columns: 20% 1fr 30%;
+  height: 100vh;
+  margin: 0 auto;
+}
 .infinite-scroll-component {
   overflow: hidden !important;
 }
