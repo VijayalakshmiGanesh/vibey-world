@@ -45,3 +45,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #111320;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #2d2f3e;
+}
