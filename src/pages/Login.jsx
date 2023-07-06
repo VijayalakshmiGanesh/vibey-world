@@ -38,7 +38,7 @@ function Login() {
         className="h-[30vh] object-cover md:h-[100vh] md:w-1/2"
       />
       <div className="flex flex-col items-center justify-center md:w-1/2 ">
-        <div className="border border-2 border-gray-700 px-3 py-6 my-3">
+        <div className="border border-2 border-gray-700 px-3 py-6 my-3 shadow-md shadow-gray-600/50">
           <img src="../assests/logo-copy-removebg-preview.png" alt="Logo" />
           <form>
             <p className="flex flex-col my-3">

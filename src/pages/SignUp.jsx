@@ -47,7 +47,7 @@ function SignUp() {
           className="h-[30vh] object-cover md:h-[100vh] md:w-1/2"
         />
         <div className="flex flex-col items-center justify-center  md:w-1/2 ">
-          <div className="border border-2 border-gray-700 px-3 py-6 my-3 w-[90vw] md:w-auto">
+          <div className="border border-2 border-gray-700 px-3 py-6 my-3 w-[90vw] md:w-auto shadow-md shadow-gray-600/50">
             <span className="flex items-center justify-center">
               <img
                 src="../assests/logo-copy-removebg-preview.png"
@@ -126,7 +126,7 @@ function SignUp() {
               <p>
                 <button
                   onClick={(e) => signupHandler(e)}
-                  className="btn-primary"
+                  className="btn-primary "
                 >
                   SignUp
                 </button>
