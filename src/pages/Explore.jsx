@@ -20,7 +20,7 @@ function Explore() {
   const [postsToDisplay, setPostsToDisplay] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [pageNumber, setPageNumber] = useState(2);
-
+  console.log("fill  ", filteredPosts);
   const fetchData = () => {
     if (filteredPosts?.length > postsToDisplay?.length) {
       setTimeout(() => {
@@ -59,7 +59,7 @@ function Explore() {
   }, []);
   return (
     <div>
-      <div className="w-full lg:w-[40rem]">
+      <div className="w-full">
         <div className="flex justify-start p-3 my-1">
           <button
             onClick={() => navigate(-1)}

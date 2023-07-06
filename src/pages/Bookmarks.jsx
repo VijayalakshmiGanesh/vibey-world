@@ -20,7 +20,7 @@ function Bookmarks() {
     //     <NavBar />
     //   </div>
     <div>
-      <div className="w-full lg:w-[40rem]">
+      <div className="w-full">
         <div className="flex justify-start p-3 my-1">
           <button
             onClick={() => navigate(-1)}
@@ -32,7 +32,7 @@ function Bookmarks() {
         </div>
         <div className="flex flex-col items-center m-2 flex-wrap">
           {bookmarks.length === 0 ? (
-            <p className="bg-red-500/[0.3] w-full text-xl p-3 my-3 rounded">
+            <p className="bg-yellow-500/[0.3] w-full text-xl p-3 my-3 rounded">
               No bookmarked posts
             </p>
           ) : (
