@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import Avatar from "react-avatar";
+import DisplayPic from "./DisplayPic";
 
 function ListModal({ followList, ListName, CloseButton }) {
   return (
@@ -22,25 +22,10 @@ function ListModal({ followList, ListName, CloseButton }) {
                 to={`/profile/${user.username}`}
                 className="flex items-center border-b border-slate-400 mx-2 my-3 hover:border hover:border-2 hover:border-gray-700 hover:bg-[#2d2f3e]"
               >
-                {user.imageURL !== "" ? (
-                  <img
-                    src={user.imageURL}
-                    alt="dp"
-                    className="w-[45px] h-[45px] rounded-full object-cover"
-                  />
-                ) : (
-                  <Avatar
-                    color={Avatar.getRandomColor("sitebase", [
-                      "rose",
-                      "blue",
-                      // "rgb(251 146 60)",
-                      "black",
-                    ])}
-                    name={`${user.firstName} ${user.lastName}`}
-                    size="50"
-                    round={true}
-                  />
-                )}
+                <DisplayPic
+                  fullName={`${user.firstName} ${user.lastName}`}
+                  imageURL={user.imageURL}
+                />
                 <p className="py-2 px-3">
                   <span className="flex flex-col">
                     {user.firstName} {user.lastName}

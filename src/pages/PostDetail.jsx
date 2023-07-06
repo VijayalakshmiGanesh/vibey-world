@@ -32,6 +32,7 @@ import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
 import CommentCard from "../component/CommentCard";
 import Loader from "../component/Loaders";
+import DisplayPic from "../component/DisplayPic";
 
 function PostDetail() {
   const navigate = useNavigate();
@@ -174,7 +175,7 @@ function PostDetail() {
   }, []);
 
   return (
-    <div className="w-full lg:w-[40rem]">
+    <div className="w-full ">
       <div className="flex justify-start p-3 my-1">
         <button
           onClick={() => navigate(-1)}
@@ -191,30 +192,11 @@ function PostDetail() {
       ) : (
         <>
           <div
-            className="border border-slate-400 px-3 py-5 flex w-full mx-2"
+            className="border border-slate-400 px-3 py-5 flex w-full "
             key={postDetail?._id}
           >
             <NavLink to={`/profile/${postDetail?.username}`}>
-              {!dp || dp?.length === 0 ? (
-                <Avatar
-                  color={Avatar.getRandomColor("sitebase", [
-                    // "rgb(251 146 60)",
-                    "black",
-
-                    "blue",
-                    "pink",
-                  ])}
-                  name={postDetail?.fullName}
-                  size="50"
-                  round={true}
-                />
-              ) : (
-                <img
-                  src={dp}
-                  alt="dp"
-                  className="w-[60px] min-w-[60px] h-[50px] px-1 rounded-full object-cover"
-                />
-              )}
+              <DisplayPic fullName={postDetail?.fullName} imageURL={dp} />
             </NavLink>
             <div className="px-2 mx-2 grow">
               <p className="flex justify-between">
@@ -441,27 +423,10 @@ function PostDetail() {
           <div>
             <p className="flex items-center  border-y ml-2 border-slate-400 p-5">
               <NavLink to={`/profile/${postDetail?.username}`}>
-                {!currentUserDetails?.imageURL ||
-                currentUserDetails?.imageURL?.length === 0 ? (
-                  <Avatar
-                    color={Avatar.getRandomColor("sitebase", [
-                      // "rgb(251 146 60)",
-                      "black",
-
-                      "blue",
-                      "pink",
-                    ])}
-                    name={`${currentUserDetails?.firstName} ${currentUserDetails?.lastName}`}
-                    size="50"
-                    round={true}
-                  />
-                ) : (
-                  <img
-                    src={currentUserDetails?.imageURL}
-                    alt="dp"
-                    className="w-[60px] min-w-[60px] h-[50px] px-1 rounded-full object-cover"
-                  />
-                )}
+                <DisplayPic
+                  imageURL={currentUserDetails?.imageURL}
+                  fullName={`${currentUserDetails?.firstName} ${currentUserDetails?.lastName}`}
+                />
               </NavLink>
               <input
                 type="text"

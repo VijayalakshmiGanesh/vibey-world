@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { NavLink } from "react-router-dom";
 
-import Avatar from "react-avatar";
 import { useEffect, useState } from "react";
+import DisplayPic from "./DisplayPic";
 
 function CommentCard({ comment }) {
   const {
@@ -60,26 +60,7 @@ function CommentCard({ comment }) {
       key={_id}
     >
       <NavLink to={`/profile/${username}`}>
-        {!dp || dp.length === 0 ? (
-          <Avatar
-            color={Avatar.getRandomColor("sitebase", [
-              // "rgb(251 146 60)",
-              "black",
-
-              "blue",
-              "pink",
-            ])}
-            name={fullName}
-            size="50"
-            round={true}
-          />
-        ) : (
-          <img
-            src={dp}
-            alt="dp"
-            className="w-[60px] min-w-[60px] h-[50px] px-1 rounded-full object-cover"
-          />
-        )}
+        <DisplayPic imageURL={dp} fullName={fullName} />
       </NavLink>
       <div className="text-left px-5">
         <p className="flex items-center">

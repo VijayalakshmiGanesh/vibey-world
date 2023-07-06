@@ -8,7 +8,6 @@ import {
   BsThreeDots,
 } from "react-icons/bs";
 import { MdOutlineEmojiEmotions } from "react-icons/md";
-import Avatar from "react-avatar";
 import EmojiPicker from "emoji-picker-react";
 
 import {
@@ -24,6 +23,7 @@ import { useData } from "../context/DataContext";
 import { useAuth } from "../context/AuthContext";
 import { followUser, unFollowUser } from "../services/Auth";
 import { NavLink, useNavigate } from "react-router-dom";
+import DisplayPic from "./DisplayPic";
 
 function PostCard({ post }) {
   const {
@@ -161,26 +161,7 @@ function PostCard({ post }) {
       key={_id}
     >
       <NavLink to={`/profile/${userId?.username}`}>
-        {!dp || dp.length === 0 ? (
-          <Avatar
-            color={Avatar.getRandomColor("sitebase", [
-              // "rgb(251 146 60)",
-              "black",
-
-              "blue",
-              "pink",
-            ])}
-            name={fullName}
-            size="50"
-            round={true}
-          />
-        ) : (
-          <img
-            src={dp}
-            alt="dp"
-            className="w-[60px] min-w-[60px] h-[50px] px-1 rounded-full object-cover "
-          />
-        )}
+        <DisplayPic imageURL={dp} fullName={fullName} />
       </NavLink>
       <div className="px-2 mx-2 grow">
         <p className="flex justify-between">
@@ -199,12 +180,7 @@ function PostCard({ post }) {
             onMouseOver={() => setDisplayPostOptions((prev) => !prev)}
             onMouseOut={() => setDisplayPostOptions(false)}
           >
-            <button
-            // onMouseOver={() =>
-            //   setDisplayPostOptions((prev) => !prev)
-            // }
-            // onMouseOut={() => setDisplayPostOptions(false)}
-            >
+            <button>
               <BsThreeDots />
             </button>
             {username === currentUserDetails.username && displayPostOptions ? (

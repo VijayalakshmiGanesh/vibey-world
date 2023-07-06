@@ -10,7 +10,6 @@ import { BiTrendingUp } from "react-icons/bi";
 import { BsImage, BsEmojiSmile } from "react-icons/bs";
 // import { MdOutlineEmojiEmotions } from "react-icons/md";
 import { v4 as uuid } from "uuid";
-import Avatar from "react-avatar";
 import EmojiPicker from "emoji-picker-react";
 
 import { getAllPosts, newPost } from "../services/Posts";
@@ -22,6 +21,7 @@ import PostCard from "../component/PostCard";
 // import NavBar from "../component/NavBar";
 // import Aside from "../component/Aside";
 import Loader from "../component/Loaders";
+import DisplayPic from "../component/DisplayPic";
 
 function Home() {
   const { posts, datadispatch } = useData();
@@ -38,10 +38,6 @@ function Home() {
     const currentFollowing = currentUserDetails?.following?.map(
       ({ username }) => username
     );
-    // if (currentFollowing.length === 0)
-    //   return posts.filter(
-    //     ({ username }) => currentUserDetails.username === username
-    //   );
 
     const filteredPostsBasedOnFollowing =
       currentFollowing?.length >= 1
@@ -151,11 +147,7 @@ function Home() {
   }, []);
   return (
     <div>
-      {/* // <div className="flex justify-start">
-    //   <div className=" px-5 pr-[13rem]">
-    //     <NavBar />
-    //   </div> */}
-      <div className="w-full lg:w-[40rem] ">
+      <div className="w-full ">
         {isLoading ? (
           <span className="flex items-center justify-center h-screen text-2xl">
             {" "}
@@ -165,18 +157,11 @@ function Home() {
           <>
             <div>
               <div className="flex justify-start border-b md:border border-slate-400 p-3 my-3 md:mx-5">
-                <Avatar
-                  name={`${currentUserDetails.firstName} ${currentUserDetails.lastName}`}
-                  round={true}
-                  size="50"
-                  color={Avatar.getRandomColor("sitebase", [
-                    // "rgb(251 146 60)",
-                    "black",
-
-                    "blue",
-                    "pink",
-                  ])}
+                <DisplayPic
+                  imageURL={currentUserDetails.imageURL}
+                  fullName={`${currentUserDetails.firstName} ${currentUserDetails.lastName}`}
                 />
+
                 <div className="relative grow w-[35rem]">
                   <textarea
                     className=" my-2 py-2 input-text border-0 resize-none w-full bg-inherit focus-visible:border-0 focus:outline-0"
@@ -298,14 +283,10 @@ function Home() {
                   return <PostCard post={post} />;
                 })
               )}
-              {/* <AdvancedImage cldImg={myImage} /> */}
             </div>
           </>
         )}
       </div>
-      {/* <div>
-        <Aside />
-      </div> */}
     </div>
   );
 }
