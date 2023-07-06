@@ -17,15 +17,25 @@ body {
 .App {
   text-align: center;
 }
+
+.infinite-scroll-component {
+  overflow: hidden !important;
+}
 .gridd {
   max-width: 1280px;
   display: grid;
-  grid-template-columns: 20% 1fr 30%;
+  grid-template-columns: 1fr;
   height: 100vh;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
-.infinite-scroll-component {
-  overflow: hidden !important;
+@media (min-width: 768px) {
+  .gridd {
+    max-width: 1280px;
+    display: grid;
+    grid-template-columns: 20% 1fr 30%;
+    height: 100vh;
+    margin: 0 auto;
+  }
 }
 /* font-family: 'Exo 2', sans-serif;
 font-family: 'Noto Serif JP', serif;

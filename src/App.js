@@ -22,15 +22,15 @@ function App() {
     // <div className="App flex justify-center " >
     <div
       className={`App ${
-        location?.pathname !== "/login" && location?.pathname !== "/signup"
-          ? "md:flex md:justify-center gridd"
-          : ""
+        location?.pathname !== "/login" &&
+        location?.pathname !== "/signup" &&
+        "gridd"
       }`}
     >
       <div
         className={` ${
           location?.pathname !== "/login" && location?.pathname !== "/signup"
-            ? "block"
+            ? "hidden md:block"
             : "hidden"
         }`}
       >
@@ -87,7 +87,7 @@ function App() {
       <div
         className={` ${
           location?.pathname !== "/login" && location?.pathname !== "/signup"
-            ? "block "
+            ? "hidden md:block "
             : "hidden"
         }`}
       >
