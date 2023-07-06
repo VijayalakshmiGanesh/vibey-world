@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { AiOutlineHome, AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineCompass } from "react-icons/ai";
 import { BiBookmark } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import { MdLogout } from "react-icons/md";
@@ -32,16 +32,16 @@ function NavBar() {
           <span className="text-2xl md:px-1 ">
             <AiOutlineHome />
           </span>
-          <span className="hidden md:inline"> Home</span>
+          <span className="hidden lg:inline"> Home</span>
         </NavLink>
         <NavLink
           to="/explore"
           className="flex items-center md:flex md:items-center md:text-lg md:p-2 md:m-1 md:hover:border md:hover:border-2 md:hover:border-gray-700 md:hover:bg-[#2d2f3ea8] md:rounded-lg"
         >
           <span className="text-2xl md:px-1">
-            <AiOutlineSearch />
+            <AiOutlineCompass />
           </span>
-          <span className="hidden md:inline"> Explore</span>
+          <span className="hidden lg:inline"> Explore</span>
         </NavLink>
         <NavLink
           to="/bookmarks"
@@ -50,7 +50,7 @@ function NavBar() {
           <span className="text-2xl md:px-1">
             <BiBookmark />
           </span>
-          <span className="hidden md:inline"> Bookmarks</span>
+          <span className="hidden lg:inline"> Bookmarks</span>
         </NavLink>
         <NavLink
           to={`/profile/${currentUserDetails.username}`}
@@ -59,7 +59,7 @@ function NavBar() {
           <span className="text-2xl md:px-1">
             <CgProfile />
           </span>
-          <span className="hidden md:inline"> Profile</span>
+          <span className="hidden lg:inline"> Profile</span>
         </NavLink>
         <button
           onClick={() => {
@@ -71,10 +71,10 @@ function NavBar() {
           <span className="text-2xl md:px-1">
             <MdLogout />
           </span>
-          <span className="hidden md:inline"> Logout</span>
+          <span className="hidden lg:inline"> Logout</span>
         </button>
       </div>
-      <div className="hidden md:inline">
+      <div className="hidden lg:inline">
         <NavLink to={`/profile/${currentUserDetails.username}`}>
           <ProfileCard
             name={`${currentUserDetails.firstName} ${currentUserDetails.lastName}`}
