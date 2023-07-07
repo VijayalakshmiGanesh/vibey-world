@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
+import { BiHide, BiShow } from "react-icons/bi";
+import { useNavigate } from "react-router";
+import { NavLink } from "react-router-dom";
+
 import { useAuth } from "../context/AuthContext";
 import { signUp } from "../services/Auth";
 import { validateNonEmptyText } from "../utils/regexValidations";
-import { useNavigate } from "react-router";
-import { NavLink } from "react-router-dom";
 import { useData } from "../context/DataContext";
 
 function SignUp() {
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const { datadispatch } = useData();
@@ -99,20 +102,31 @@ function SignUp() {
                 <label className="label" htmlFor="password">
                   Password:
                 </label>
-                <input
-                  type="password"
-                  id="password"
-                  value={enteredPassword}
-                  className="input-text"
-                  onChange={(e) => setEnteredPassword(e.target.value)}
-                />
+                <span className="relative flex items-center">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    id="password"
+                    value={enteredPassword}
+                    className="input-text w-full"
+                    onChange={(e) => setEnteredPassword(e.target.value)}
+                  />
+                  <button
+                    className="absolute right-0 p-2 text-lg"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setShowPassword((prev) => !prev);
+                    }}
+                  >
+                    {showPassword ? <BiHide /> : <BiShow />}
+                  </button>
+                </span>
               </p>
               <p className="flex flex-col  my-3">
                 <label className="label" htmlFor="confirmPassword">
                   Confirm Password:
                 </label>
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   id="confirmPassword"
                   value={confirmPassword}
                   className="input-text"

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { BiHide, BiShow } from "react-icons/bi";
+
 import { useAuth } from "../context/AuthContext";
 import { login } from "../services/Auth";
 import { validateNonEmptyText } from "../utils/regexValidations";
@@ -8,6 +10,7 @@ import { useData } from "../context/DataContext";
 function Login() {
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const { datadispatch } = useData();
   const { userDispatch, setIsUserLoggedIn, isUserLoggedIn } = useAuth();
   const navigate = useNavigate();
@@ -48,7 +51,7 @@ function Login() {
               <input
                 type="text"
                 id="username"
-                placeholder="adarshbalika"
+                placeholder="charles_leclerc"
                 value={enteredUsername}
                 onChange={(e) => setEnteredUsername(e.target.value)}
                 className="input-text"
@@ -58,14 +61,25 @@ function Login() {
               <label htmlFor="password" className="label">
                 Password
               </label>
-              <input
-                type="password"
-                id="password"
-                placeholder="adarshBalika123"
-                value={enteredPassword}
-                onChange={(e) => setEnteredPassword(e.target.value)}
-                className="input-text"
-              />
+              <span className="relative flex items-center">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  placeholder="charlesleclerc123"
+                  value={enteredPassword}
+                  onChange={(e) => setEnteredPassword(e.target.value)}
+                  className="input-text w-full"
+                />
+                <button
+                  className="absolute right-0 p-2 text-lg"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setShowPassword((prev) => !prev);
+                  }}
+                >
+                  {showPassword ? <BiHide /> : <BiShow />}
+                </button>
+              </span>
             </p>
             <p className="flex justify-center ">
               <button className="btn-primary" onClick={(e) => loginHandler(e)}>
@@ -76,8 +90,8 @@ function Login() {
                 // className="w-3/4 p-2 m-3 rounded-md border border-2 border-gray-700 bg-[#ff059b]"
                 onClick={(e) => {
                   e.preventDefault();
-                  setEnteredUsername("adarshbalika");
-                  setEnteredPassword("adarshBalika123");
+                  setEnteredUsername("charles_leclerc");
+                  setEnteredPassword("charlesleclerc123");
                 }}
               >
                 Test Credentials
