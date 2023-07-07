@@ -12,7 +12,7 @@ import { BsImage, BsEmojiSmile } from "react-icons/bs";
 import { v4 as uuid } from "uuid";
 import EmojiPicker from "emoji-picker-react";
 
-import { getAllPosts, newPost } from "../services/Posts";
+import { newPost } from "../services/Posts";
 import { useData } from "../context/DataContext";
 import { formatDate } from "../backend/utils/authUtils";
 import { useAuth } from "../context/AuthContext";
@@ -139,7 +139,7 @@ function Home() {
 
   useEffect(() => {
     setIsLoading(true);
-    getAllPosts(datadispatch);
+    // getAllPosts(datadispatch);
     getAllUsers(userDispatch);
     setTimeout(() => {
       setIsLoading(false);

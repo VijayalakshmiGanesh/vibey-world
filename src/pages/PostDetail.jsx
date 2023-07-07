@@ -85,8 +85,6 @@ function PostDetail() {
     }
   };
 
-  console.log("1", postDetail);
-  // console.log("2", currentUserDetails, allUsers);
   useEffect(() => {
     const user = allUsers.find(
       (user) => user.username === postDetail?.username
