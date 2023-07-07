@@ -63,7 +63,10 @@ function Aside() {
               {searchResults?.map(
                 ({ firstName, lastName, username, _id, imageURL }) => (
                   <NavLink to={`/profile/${username}`}>
-                    <div key={_id} className="flex items-center ">
+                    <div
+                      key={_id}
+                      className="flex items-center hover:border hover:border-2 hover:border-gray-700 hover:bg-[#2d2f3ea8]"
+                    >
                       <span className="mx-3 px-2">
                         <DisplayPic
                           imageURL={imageURL}
