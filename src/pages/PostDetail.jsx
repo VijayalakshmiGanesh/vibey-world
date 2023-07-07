@@ -10,7 +10,6 @@ import {
   BsThreeDots,
 } from "react-icons/bs";
 import { MdOutlineEmojiEmotions } from "react-icons/md";
-import Avatar from "react-avatar";
 import EmojiPicker from "emoji-picker-react";
 
 // import Aside from "../component/Aside";
