@@ -56,7 +56,7 @@ function CommentCard({ comment }) {
   }, [comment]);
   return (
     <div
-      className="flex  border-y border-gray-700 p-3 w-full  mx-2 justify-start"
+      className="flex  border-y border-gray-700 p-3 w-full justify-start"
       key={_id}
     >
       <NavLink to={`/profile/${username}`}>
