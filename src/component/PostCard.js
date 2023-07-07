@@ -334,7 +334,7 @@ function PostCard({ post }) {
           ) : (
             <div className="flex ">
               <button
-                className="rounded-full  hover:bg-red-300/[0.1] p-2 hover:text-red-700 flex items-center z-50"
+                className="rounded-full  hover:bg-red-300/[0.1] p-2 hover:text-red-700 flex items-center"
                 onClick={() =>
                   checkLikedList(likes.likedBy)
                     ? likePost(_id, posts, datadispatch)
@@ -349,14 +349,14 @@ function PostCard({ post }) {
                 <span className="text-lg pl-2 ">{likes.likeCount}</span>
               </button>
               <button
-                className="px-5 rounded-full  hover:bg-yellow-300/[0.1] p-2 hover:text-yellow-700 flex items-center text-lg z-50"
+                className="px-5 rounded-full  hover:bg-yellow-300/[0.1] p-2 hover:text-yellow-700 flex items-center text-lg "
                 onClick={() => navigate(`/post/${_id}`)}
               >
                 <BiComment />
                 <span className="text-lg pl-2 ">{comments.length}</span>
               </button>
               <button
-                className={`  px-5 z-50 ${
+                className={`  px-5  ${
                   !checkBookmarkList(_id) ? "text-green-500" : "text-white"
                 } hover:text-green-500 hover:bg-green-500/[0.1] rounded-full`}
                 onClick={() => {
