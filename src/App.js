@@ -37,7 +37,7 @@ function App() {
       <div
         className={` ${
           location?.pathname !== "/login" && location?.pathname !== "/signup"
-            ? "hidden md:block"
+            ? "iniline md:block"
             : "hidden"
         }`}
       >
