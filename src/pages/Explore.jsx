@@ -58,7 +58,7 @@ function Explore() {
     setPostsToDisplay(filteredPosts.slice(0, 3));
   }, []);
   return (
-    <div>
+    <div id="explore-content">
       <div className="w-full">
         <div className="flex justify-start p-3 my-1">
           <button
@@ -71,7 +71,7 @@ function Explore() {
         </div>
         <div
           className="flex flex-col items-center my-2 flex-wrap "
-          style={{ overflow: "hidden" }}
+          // style={{ overflow: "hidden" }}
         >
           <InfiniteScroll
             dataLength={postsToDisplay.length}
@@ -83,6 +83,7 @@ function Explore() {
                 <Loader />
               </div>
             }
+            scrollableTarget="main-content"
             endMessage={
               <p className="bg-green-500/[0.3] w-full text-xl p-3 my-3 rounded">
                 Yay! You have seen it all
@@ -95,7 +96,7 @@ function Explore() {
               </p>
             ) : (
               postsToDisplay?.map((post) => {
-                return <PostCard post={post} />;
+                return <PostCard post={post} key={post._id} />;
               })
             )}
           </InfiniteScroll>
