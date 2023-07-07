@@ -20,6 +20,10 @@ export const login = async (
     });
     if (response.status === 200) {
       localStorage.setItem("key", JSON.parse(response._bodyInit).encodedToken);
+      localStorage.setItem(
+        "user",
+        JSON.stringify(JSON.parse(response._bodyInit).foundUser)
+      );
       userdispatch({
         type: "SET_CURRENT_USER_DETAILS",
         payload: JSON.parse(response._bodyInit).foundUser,
@@ -57,6 +61,10 @@ export const signUp = async (
 
     if (response.status === 201) {
       localStorage.setItem("key", JSON.parse(response._bodyInit).encodedToken);
+      localStorage.setItem(
+        "user",
+        JSON.stringify(JSON.parse(response._bodyInit).createdUser)
+      );
       userdispatch({
         type: "SET_CURRENT_USER_DETAILS",
         payload: JSON.parse(response._bodyInit).createdUser,
