@@ -143,7 +143,7 @@ function Home() {
     getAllUsers(userDispatch);
     setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 500);
   }, []);
   return (
     <div>
