@@ -169,6 +169,9 @@ export const bookmarkPost = async (postToBeBookmarkedID, datadispatch) => {
         type: "GET_ALL_BOOKMARKED_POSTS",
         payload: JSON.parse(response._bodyInit).bookmarks,
       });
+      notifySuccess("Post bookmarked successfully");
+    } else {
+      notifyError("Something went wrong. Please try again later");
     }
     console.log(response);
   } catch (e) {
@@ -193,6 +196,9 @@ export const removeBookmarkPost = async (
         type: "GET_ALL_BOOKMARKED_POSTS",
         payload: JSON.parse(response._bodyInit).bookmarks,
       });
+      notifySuccess("Post has been removed from bookmarks");
+    } else {
+      notifyError("Something went wrong. Please try again later");
     }
   } catch (e) {
     console.log(e);
@@ -230,6 +236,7 @@ export const addCommentToPost = async (comments, postId, datadispatch) => {
           ({ _id }) => _id === postId
         ),
       });
+      notifySuccess("Comments added to the post");
     }
   } catch (e) {
     console.log(e);

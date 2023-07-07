@@ -27,8 +27,7 @@ export const login = async (
       setIsUserLoggedIn(true);
       getAllPosts(datadispatch);
     } else {
-      if (response.statusText === "Not Found") {
-      }
+      notifyError("Username or Password is incorrect");
     }
   } catch (e) {
     console.log(e);
@@ -65,6 +64,7 @@ export const signUp = async (
       setIsUserLoggedIn(true);
       getAllPosts(datadispatch);
     } else {
+      notifyError("Something went wrong. Please try again later");
     }
   } catch (e) {
     console.log(e);
@@ -78,6 +78,7 @@ export const logout = (userdispatch, setIsUserLoggedIn) => {
     type: "SET_CURRENT_USER_DETAILS",
     payload: {},
   });
+  notifySuccess("Logged out successfully");
 };
 
 export const getUserPosts = async (username, userdispatch) => {
@@ -146,6 +147,9 @@ export const editUserDetails = async (detailsToBeEdited, userdispatch) => {
         payload: JSON.parse(response._bodyInit).user,
       });
       getAllUsers(userdispatch);
+      notifySuccess("User details saved !");
+    } else {
+      notifyError("Something went wrong. Please try again later");
     }
   } catch (e) {
     console.log(e);
@@ -166,8 +170,9 @@ export const followUser = async (userIdToBeFollowed, userdispatch) => {
       });
       getAllUsers(userdispatch);
       notifySuccess("Started following user successfully");
+    } else {
+      notifyError("Something went wrong. Please try again later");
     }
-    console.log(response);
   } catch (e) {
     console.log(e);
   }
@@ -189,6 +194,8 @@ export const unFollowUser = async (userIdToBeUnfollowed, userdispatch) => {
       });
       getAllUsers(userdispatch);
       notifySuccess("Unfollowed user successfully");
+    } else {
+      notifyError("Something went wrong. Please try again later");
     }
   } catch (e) {
     console.log(e);
