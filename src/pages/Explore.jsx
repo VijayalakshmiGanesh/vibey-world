@@ -20,7 +20,7 @@ function Explore() {
   const [postsToDisplay, setPostsToDisplay] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [pageNumber, setPageNumber] = useState(2);
-  console.log("fill  ", filteredPosts);
+
   const fetchData = () => {
     if (filteredPosts?.length > postsToDisplay?.length) {
       setTimeout(() => {
@@ -30,7 +30,7 @@ function Explore() {
             ? pageNumber * 3
             : (pageNumber - 1) * 3 +
               (filteredPosts.length - (pageNumber - 1) * 3);
-        console.log(start, end);
+
         const newPosts = [];
         for (let i = start; i < end; i++) {
           newPosts.push(filteredPosts[i]);
