@@ -2,7 +2,6 @@
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate, useParams } from "react-router";
-import Avatar from "react-avatar";
 import { useEffect } from "react";
 import { BiObjectsHorizontalLeft } from "react-icons/bi";
 import { BsLink45Deg } from "react-icons/bs";
