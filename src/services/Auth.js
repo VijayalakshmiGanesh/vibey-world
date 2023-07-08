@@ -79,12 +79,17 @@ export const signUp = async (
   }
 };
 
-export const logout = (userdispatch, setIsUserLoggedIn) => {
+export const logout = (userdispatch, datadispatch, setIsUserLoggedIn) => {
   setIsUserLoggedIn(false);
   localStorage.removeItem("key");
+  localStorage.removeItem("user");
   userdispatch({
     type: "SET_CURRENT_USER_DETAILS",
     payload: {},
+  });
+  datadispatch({
+    type: "GET_ALL_BOOKMARKED_POSTS",
+    payload: [],
   });
   notifySuccess("Logged out successfully");
 };

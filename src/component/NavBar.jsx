@@ -6,9 +6,11 @@ import { MdLogout } from "react-icons/md";
 import ProfileCard from "./ProfileCard";
 import { useAuth } from "../context/AuthContext";
 import { logout } from "../services/Auth";
+import { useData } from "../context/DataContext";
 
 function NavBar() {
   const { currentUserDetails, setIsUserLoggedIn, userDispatch } = useAuth();
+  const { datadispatch } = useData();
   const navigate = useNavigate();
 
   return (
@@ -63,7 +65,7 @@ function NavBar() {
         </NavLink>
         <button
           onClick={() => {
-            logout(userDispatch, setIsUserLoggedIn);
+            logout(userDispatch, datadispatch, setIsUserLoggedIn);
             navigate("/login");
           }}
           className="flex items-center md:flex md:items-center md:text-lg md:p-2 md:m-1 md:hover:border md:hover:border-2 md:hover:border-gray-700 md:hover:bg-[#2d2f3ea8] md:rounded-lg"
