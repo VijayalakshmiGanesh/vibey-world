@@ -211,7 +211,7 @@ function Home() {
                         <BsEmojiSmile />
                       </button>
                       {isEmojiKeypadDisplayed && (
-                        <span className="absolute top-5  right-2 mx-auto">
+                        <span className="absolute top-5 left-2 mx-auto">
                           <EmojiPicker
                             onEmojiClick={(e) =>
                               setNewPostContent((prev) => prev.concat(e.emoji))
