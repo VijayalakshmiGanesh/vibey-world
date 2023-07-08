@@ -157,7 +157,7 @@ function PostCard({ post }) {
   };
   return (
     <div
-      className="hover:surface-clr border-b md:border border-gray-700 px-3 py-5 flex w-full "
+      className="hover:surface-clr border-b md:border border-gray-700 px-3 py-5 flex min-w-full w-full"
       key={_id}
     >
       <NavLink to={`/profile/${userId?.username}`}>
@@ -244,6 +244,7 @@ function PostCard({ post }) {
 
         <p className="py-1">
           {isEditingPost &&
+          filesSelected &&
           filesSelected !== "" &&
           filesSelected?.length !== 0 ? (
             <span className="relative">
