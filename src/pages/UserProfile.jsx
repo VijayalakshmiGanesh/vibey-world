@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import PostCard from "../component/PostCard";
 import ListModal from "../component/ListModal";
 import { useData } from "../context/DataContext";
+import Loader from "../component/Loaders";
 
 function UserProfile() {
   const { currentUserDetails, userDispatch, userPosts, allUsers } = useAuth();
@@ -26,8 +27,13 @@ function UserProfile() {
   const { usernameid } = useParams();
   const [isListDisplayed, setIsListDisplayed] = useState(false);
   const [listName, setListName] = useState("");
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
+    setLoading(true);
     getUserPosts(usernameid, userDispatch);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [usernameid, posts]);
 
@@ -177,23 +183,30 @@ function UserProfile() {
             </div>
           </div>
           <div className="flex flex-col items-center py-3">
-            {userPosts?.length === 0 ? (
-              <p>No posts to display</p>
+            {loading ? (
+              <Loader />
             ) : (
               <>
-                {
-                  [
-                    ...userPosts.sort(
-                      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-                    ),
-                  ].map((post) => (
-                    <PostCard post={post} />
-                  ))
+                {userPosts?.length === 0 ? (
+                  <p>No posts to display</p>
+                ) : (
+                  <>
+                    {
+                      [
+                        ...userPosts.sort(
+                          (a, b) =>
+                            new Date(b.createdAt) - new Date(a.createdAt)
+                        ),
+                      ].map((post) => (
+                        <PostCard post={post} />
+                      ))
 
-                  // userPosts.map((post) => (
-                  //   <PostCard post={post} />
-                  // ))
-                }
+                      // userPosts.map((post) => (
+                      //   <PostCard post={post} />
+                      // ))
+                    }
+                  </>
+                )}
               </>
             )}
           </div>
