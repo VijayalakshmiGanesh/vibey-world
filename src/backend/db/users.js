@@ -54,7 +54,8 @@ export const users = [
         lastName: "Leclerc",
         username: "charles_leclerc",
         _id: "56a6ea0e-49ad-4f55-b64b-79abbd82dbb7",
-        imageURL: "",
+        imageURL:
+          "https://www.thefamouspeople.com/profiles/images/charles-leclerc-4.jpg",
       },
     ],
     following: [
@@ -179,7 +180,8 @@ export const users = [
         lastName: "Leclerc",
         username: "charles_leclerc",
         _id: "56a6ea0e-49ad-4f55-b64b-79abbd82dbb7",
-        imageURL: "",
+        imageURL:
+          "https://www.thefamouspeople.com/profiles/images/charles-leclerc-4.jpg",
       },
     ],
     following: [
