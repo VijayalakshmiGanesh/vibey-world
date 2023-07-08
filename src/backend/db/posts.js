@@ -29,8 +29,26 @@ export const posts = [
     content:
       "4th in yesterday's race. We are going in the right direction and the feeling with the car was better. Next stop is Austria",
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 2,
+      likedBy: [
+        {
+          firstName: "Daniel",
+          lastName: "Ricciardo",
+          username: "danielricciardo",
+          _id: "a0176595-ba18-4ee1-8cd9-3a856e021796",
+          fullName: "Daniel Ricciardo",
+          imageURL: "",
+        },
+        {
+          _id: "d3af6e96-5352-4c25-918c-946ca485aa0b",
+          firstName: "Sebastian",
+          lastName: "Vettel",
+          username: "sebastianvettel",
+          fullName: "Sebastian Vettel",
+          imageURL:
+            "https://d3cm515ijfiu6w.cloudfront.net/wp-content/uploads/2019/12/02125744/SebastianVettelPA2.jpg",
+        },
+      ],
       dislikedBy: [],
     },
     username: "charles_leclerc",
@@ -60,8 +78,20 @@ export const posts = [
     comments: [],
     content: `Apart from just getting beat 5-0 by Lando in table tennis, he's taught me so much this year, especially in high speed corners. Impressive.`,
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 1,
+      likedBy: [
+        {
+          _id: "8fcd2eef-62c1-4fcb-b81f-9b3ce96d41d2",
+          fullName: "Lando Norris",
+          username: "landonorris",
+
+          imageURL:
+            "https://s.yimg.com/uu/api/res/1.2/3OoGW325nCOCFlVJt44pxQ--~B/aD0xODcwO3c9MzMyNDtzbT0xO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/pa-sport.com/64a39f5241602ae3874fe371cc4f86d3",
+
+          createdAt: formatDate(),
+          updatedAt: formatDate(),
+        },
+      ],
       dislikedBy: [],
     },
     username: "danielricciardo",
@@ -72,7 +102,21 @@ export const posts = [
   },
   {
     _id: uuid(),
-    comments: [],
+    comments: [
+      {
+        _id: "8fcd2eef-62c1-4fcb-b81f-9b3ce96d41d2",
+        fullName: "Lando Norris",
+        username: "landonorris",
+        firstName: "Lando",
+        lastName: "Norris",
+        comments: "YOO  !",
+        profileAvatar:
+          "https://s.yimg.com/uu/api/res/1.2/3OoGW325nCOCFlVJt44pxQ--~B/aD0xODcwO3c9MzMyNDtzbT0xO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/pa-sport.com/64a39f5241602ae3874fe371cc4f86d3",
+
+        createdAt: formatDate(),
+        updatedAt: formatDate(),
+      },
+    ],
     content:
       "Couldn't really sleep. Still floating 😌 for the overwhelming number of messages thank you. Did we win Monza @McLarenF1 ????????      ",
     likes: {
@@ -104,11 +148,32 @@ export const posts = [
   },
   {
     _id: uuid(),
-    comments: [],
+    comments: [
+      {
+        _id: "56a6ea0e-49ad-4f55-b64b-79abbd82dbb7",
+        fullName: "Charles Leclerc",
+        username: "charles_leclerc",
+        profileAvatar:
+          "https://www.thefamouspeople.com/profiles/images/charles-leclerc-4.jpg",
+        comments: "SO cute  !",
+        createdAt: formatDate(),
+        updatedAt: formatDate(),
+      },
+    ],
     content: "Roscoe says hi 💞",
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 1,
+      likedBy: [
+        {
+          _id: "56a6ea0e-49ad-4f55-b64b-79abbd82dbb7",
+          firstName: "Charles",
+          lastName: "Leclerc",
+          fullName: "Charles Leclerc",
+          username: "charles_leclerc",
+          imageURL:
+            "https://www.thefamouspeople.com/profiles/images/charles-leclerc-4.jpg",
+        },
+      ],
       dislikedBy: [],
     },
     username: "lewisHamilton",
