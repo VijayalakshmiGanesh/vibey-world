@@ -63,8 +63,8 @@ function CommentCard({ comment }) {
         <DisplayPic imageURL={dp} fullName={fullName} />
       </NavLink>
       <div className="text-left px-5">
-        <p className="flex items-center">
-          <span className="text-sm font-semibold">{fullName} &nbsp;</span>
+        <p className="flex items-center flex-wrap">
+          <span className="font-semibold">{fullName} &nbsp;</span>
           <span className="text-slate-400 text-sm">@{username} &nbsp;</span>
           <span className="flex items-center text-slate-400 text-sm">
             <span className="leading-3 self-start">.</span>
