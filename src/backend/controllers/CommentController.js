@@ -35,7 +35,7 @@ export const getPostCommentsHandler = function (schema, request) {
 
 export const addPostCommentHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
-  console.log("User", user);
+
   try {
     if (!user) {
       return new Response(
@@ -61,9 +61,9 @@ export const addPostCommentHandler = function (schema, request) {
       createdAt: formatDate(),
       updatedAt: formatDate(),
     };
-    console.log("ID", comment);
+    // console.log("ID", comment);
     const post = schema.posts.findBy({ _id: postId }).attrs;
-    console.log("parent post", post);
+    // console.log("parent post", post);
     post.comments.push(comment);
 
     this.db.posts.update({ _id: postId }, post);
