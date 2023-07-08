@@ -21,6 +21,9 @@ body {
 .infinite-scroll-component {
   overflow: hidden !important;
 }
+.infinite-scroll-component__outerdiv {
+  width: 100%;
+}
 .gridd {
   max-width: 1280px;
   display: grid;

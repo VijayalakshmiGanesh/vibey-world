@@ -70,14 +70,14 @@ function Explore() {
           <p className="flex flex-col items-start px-5 text-xl">Explore</p>
         </div>
         <div
-          className="flex flex-col items-center my-2 flex-wrap "
+          className="flex flex-col items-center my-2 flex-wrap min-w-full w-full min-h-screen"
           // style={{ overflow: "hidden" }}
         >
           <InfiniteScroll
             dataLength={postsToDisplay.length}
             next={fetchData}
             hasMore={hasMore}
-            className=""
+            className="min-w-full w-[100%]"
             loader={
               <div className="flex justify-center my-4">
                 <Loader />
