@@ -25,6 +25,10 @@ function App() {
   useEffect(() => {
     getAllPosts(datadispatch);
   }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location?.pathname]);
   return (
     // <div className="App flex justify-center " >
     <div
@@ -43,7 +47,10 @@ function App() {
       >
         <NavBar />
       </div>
-      <div className="overflow-y-scroll main-content" id="main-content">
+      <div
+        className="overflow-y-scroll main-content min-w-full"
+        id="main-content"
+      >
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
