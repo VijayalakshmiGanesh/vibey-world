@@ -48,7 +48,7 @@ function App() {
         <NavBar />
       </div>
       <div
-        className="overflow-y-scroll main-content min-w-full"
+        className="overflow-y-scroll main-content min-w-full pb-[2.1rem] md:pb-0"
         id="main-content"
       >
         <Routes>
