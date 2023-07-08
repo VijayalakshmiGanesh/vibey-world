@@ -165,9 +165,9 @@ function PostCard({ post }) {
       </NavLink>
       <div className="px-2 mx-2 grow">
         <p className="flex justify-between">
-          <span className="flex items-center">
+          <span className="flex items-center flex-wrap">
             <span className="md:text-lg font-semibold">{fullName} &nbsp;</span>
-            <span className="text-slate-400 text-sm hidden sm:inline">
+            <span className="text-slate-400 text-sm inline">
               @{username} &nbsp;
             </span>
             <span className="flex items-center text-slate-400 text-sm">
