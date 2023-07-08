@@ -172,7 +172,7 @@ function PostDetail() {
   }, []);
 
   return (
-    <div className="w-full ">
+    <div className="w-full min-h-screen">
       <div className="flex justify-start p-3 my-1">
         <button
           onClick={() => navigate(-1)}
@@ -197,7 +197,7 @@ function PostDetail() {
             </NavLink>
             <div className="px-2 mx-2 grow">
               <p className="flex justify-between">
-                <span className="flex items-center">
+                <span className="flex items-center flex-wrap">
                   <span className="text-lg font-semibold">
                     {postDetail?.fullName} &nbsp;
                   </span>

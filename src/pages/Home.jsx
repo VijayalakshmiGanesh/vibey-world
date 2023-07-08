@@ -147,7 +147,7 @@ function Home() {
   }, []);
   return (
     <div>
-      <div className="w-full ">
+      <div className="w-full min-h-screen ">
         {isLoading ? (
           <span className="flex items-center justify-center h-screen text-2xl">
             {" "}

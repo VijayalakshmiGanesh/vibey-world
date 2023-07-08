@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate, useParams } from "react-router";
@@ -8,8 +9,6 @@ import { BsLink45Deg } from "react-icons/bs";
 import { FaUserFriends } from "react-icons/fa";
 
 import { followUser, getUserPosts, unFollowUser } from "../services/Auth";
-// import NavBar from "../component/NavBar";
-// import Aside from "../component/Aside";
 import { useState } from "react";
 import EditModal from "../component/EditModal";
 import { Link } from "react-router-dom";
@@ -17,6 +16,7 @@ import PostCard from "../component/PostCard";
 import ListModal from "../component/ListModal";
 import { useData } from "../context/DataContext";
 import Loader from "../component/Loaders";
+import DisplayPic from "../component/DisplayPic";
 
 function UserProfile() {
   const { currentUserDetails, userDispatch, userPosts, allUsers } = useAuth();
@@ -29,14 +29,15 @@ function UserProfile() {
   const [listName, setListName] = useState("");
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    setLoading(true);
     getUserPosts(usernameid, userDispatch);
+  }, [usernameid, posts]);
+
+  useEffect(() => {
+    setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 500);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [usernameid, posts]);
-
+  }, [usernameid]);
   const user = allUsers?.find(({ username }) => usernameid === username);
   const { firstName, lastName, username, following, followers, imageURL, _id } =
     user;
@@ -53,12 +54,8 @@ function UserProfile() {
     setIsListDisplayed(false);
   }, [username]);
   return (
-    // <div className="flex justify-start">
-    //   <div className=" px-5 pr-[13rem]">
-    //     <NavBar />
-    //   </div>
     <div>
-      <div className="w-full">
+      <div className="w-full min-h-screen">
         <div className="flex justify-start p-3">
           <button
             onClick={() => navigate(-1)}
@@ -78,26 +75,10 @@ function UserProfile() {
         <main>
           <div className="flex border border-y-2 border-x-0 p-3 my-2 justify-between ">
             <div className="flex">
-              {!imageURL || imageURL?.length === 0 ? (
-                <Avatar
-                  color={Avatar.getRandomColor("sitebase", [
-                    "rose",
-                    "blue",
-                    // "rgb(251 146 60)",
-                    "black",
-                  ])}
-                  name={`${firstName} ${lastName}`}
-                  size="80"
-                  round={true}
-                />
-              ) : (
-                // <p></p>
-                <img
-                  src={imageURL}
-                  alt="display Pic"
-                  className="w-[90px] h-[90px] rounded-full object-cover"
-                />
-              )}
+              <DisplayPic
+                imageURL={imageURL}
+                fullName={`${firstName} ${lastName}`}
+              />
 
               <div className="text-left pl-5 md:w-[30rem] flex-1 flex-grow">
                 <div className="flex justify-between items-start">
@@ -198,7 +179,7 @@ function UserProfile() {
                             new Date(b.createdAt) - new Date(a.createdAt)
                         ),
                       ].map((post) => (
-                        <PostCard post={post} />
+                        <PostCard post={post} key={post._id} />
                       ))
 
                       // userPosts.map((post) => (

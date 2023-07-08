@@ -20,7 +20,7 @@ function Bookmarks() {
     //     <NavBar />
     //   </div>
     <div>
-      <div className="w-full">
+      <div className="w-full min-h-screen">
         <div className="flex justify-start p-3 my-1">
           <button
             onClick={() => navigate(-1)}
